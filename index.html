@@ -1,0 +1,1660 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STILL. — The First Cup</title>
+<meta name="description" content="STILL. is a coffee house on Rivington Street, London. This is the story of one perfect morning — from 05:42 to the last light.">
+<meta name="theme-color" content="#161109">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23161109'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%23c39a6b' stroke-width='5'/%3E%3Cpath d='M49 26c8 1 8 13 0 14' fill='none' stroke='%23c39a6b' stroke-width='5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Archivo:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+/* ============ STILL. — THE FIRST CUP ============ */
+:root{
+  --black:#161109; --black-2:#1e1710; --black-3:#0f0b06;
+  --ivory:#f2ead9; --cream:#f7f1e4; --paper:#e9dfcb;
+  --caramel:#c39a6b; --coffee:#6e4b30; --coffee-2:#3d2817;
+  --stone:#a99a83; --green:#7e8b72;
+  --ink:#241b12;
+  --line:rgba(36,27,18,.22); --line-d:rgba(242,234,217,.2);
+  --serif:"Fraunces","Georgia","Times New Roman",serif;
+  --sans:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --ease:cubic-bezier(.19,1,.22,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{
+  background:var(--ivory); color:var(--ink);
+  font-family:var(--sans); font-weight:400; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+::selection{background:var(--caramel); color:var(--black)}
+img{display:block; max-width:100%}
+a{color:inherit; text-decoration:none}
+button{font:inherit; color:inherit; background:none; border:0; cursor:pointer}
+ul,ol{list-style:none}
+:focus-visible{outline:1px dashed var(--caramel); outline-offset:4px}
+section{scroll-margin-top:0}
+
+/* ---------- type helpers ---------- */
+.serif{font-family:var(--serif); font-optical-sizing:auto}
+.mono{font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase}
+.display{
+  font-family:var(--serif); font-weight:340; line-height:.92;
+  letter-spacing:-.015em; font-size:clamp(64px,13.5vw,196px);
+  text-transform:uppercase;
+}
+.sub-serif{
+  font-family:var(--serif); font-style:italic; font-weight:340;
+  font-size:clamp(21px,2.6vw,34px); line-height:1.25; letter-spacing:-.01em;
+}
+.kicker{display:flex; align-items:center; gap:14px}
+.kicker .rule{width:44px; height:1px; background:currentColor; opacity:.5}
+.body-copy{max-width:46ch; font-size:15.5px; line-height:1.75; font-weight:300; color:inherit; opacity:.86}
+
+/* line-mask reveal */
+.lm{display:block; overflow:hidden; padding-bottom:.13em; margin-bottom:-.13em}
+.lm>span{display:block}
+.js .lm>span{transform:translateY(118%); transition:transform 1.1s var(--ease); transition-delay:var(--d,0s)}
+.js .live .lm>span, .js .lm.in>span, .js .in .lm>span{transform:translateY(0)}
+
+/* generic reveal */
+.js [data-reveal]{opacity:0; transform:translateY(30px); transition:opacity 1s var(--ease),transform 1s var(--ease); transition-delay:var(--d,0s)}
+.js [data-reveal].in{opacity:1; transform:none}
+.js [data-reveal="fade"]{transform:none}
+
+/* ---------- image system ---------- */
+.ph{position:relative; overflow:hidden; background:linear-gradient(150deg,#241a10,#3d2817 55%,#6e4b30)}
+.ph img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.ph .tone{position:absolute; inset:0; background:linear-gradient(150deg,#241a10,#3d2817 55%,#6e4b30); z-index:0}
+.img-fallback{
+  position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:14px; color:var(--ivory); text-align:center; padding:20px;
+  background:linear-gradient(150deg,#241a10,#3d2817 55%,#6e4b30);
+}
+.img-fallback .amp{font-family:var(--serif); font-style:italic; font-size:clamp(40px,6vw,84px); color:var(--caramel); line-height:1}
+.img-fallback .tag{font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; opacity:.75; max-width:30ch}
+
+/* film grain */
+#grain{
+  position:fixed; inset:-40px; z-index:80; pointer-events:none; opacity:.055; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* ---------- fixed chrome ---------- */
+#nav{
+  position:fixed; top:0; left:0; right:0; z-index:60;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:20px clamp(20px,4vw,44px);
+  mix-blend-mode:difference; color:#f2ead9;
+}
+#nav .brand{font-family:var(--serif); font-weight:500; font-size:22px; letter-spacing:.02em; display:flex; align-items:baseline; gap:10px}
+#nav .brand em{font-style:normal; color:var(--caramel)}
+#nav .brand small{font-family:var(--mono); font-size:9px; letter-spacing:.24em; opacity:.7; transform:translateY(-2px)}
+#nav .nav-r{display:flex; align-items:center; gap:22px}
+#nav .hours{font-family:var(--mono); font-size:10px; letter-spacing:.2em}
+#nav .menu-btn{
+  font-family:var(--mono); font-size:11px; letter-spacing:.24em;
+  border:1px solid currentColor; padding:10px 20px 9px; border-radius:2px;
+  transition:background .35s var(--ease), color .35s var(--ease);
+}
+#nav .menu-btn:hover{background:#f2ead9; color:#161109}
+@media(max-width:720px){ #nav .hours{display:none} }
+
+/* story clock */
+#clock{
+  position:fixed; left:clamp(16px,3vw,36px); bottom:clamp(16px,3vw,32px); z-index:62;
+  display:flex; align-items:center; gap:10px;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--ivory); background:rgba(22,17,9,.86); border:1px solid rgba(242,234,217,.18);
+  padding:9px 14px; border-radius:2px;
+  transition:opacity .6s var(--ease);
+}
+#clock .dot{width:6px; height:6px; border-radius:50%; background:var(--caramel); animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.35; transform:scale(.8)}50%{opacity:1; transform:scale(1)}}
+#clock.hide{opacity:0}
+@media(max-width:720px){ #clock{font-size:9.5px; padding:7px 11px} }
+
+/* ---------- fullscreen menu overlay ---------- */
+#overlay{
+  position:fixed; inset:0; z-index:70; background:var(--black-3); color:var(--ivory);
+  display:flex; flex-direction:column; visibility:hidden;
+  transition:visibility 0s .7s;
+}
+#overlay.open{visibility:visible; transition:visibility 0s}
+#overlay .veil{position:absolute; inset:0; background:var(--black-3); transform:translateY(-101%); transition:transform .65s var(--ease)}
+#overlay.open .veil{transform:translateY(0)}
+#overlay .ov-inner{
+  position:relative; z-index:2; flex:1; display:flex; flex-direction:column;
+  padding:clamp(18px,3vw,36px) clamp(20px,4vw,52px);
+  opacity:0; transform:translateY(14px); transition:opacity .5s var(--ease) .35s, transform .5s var(--ease) .35s;
+  overflow-y:auto;
+}
+#overlay.open .ov-inner{opacity:1; transform:none}
+.ov-top{display:flex; justify-content:space-between; align-items:center; padding-bottom:22px}
+.ov-top .brand{font-family:var(--serif); font-size:22px; font-weight:500}
+.ov-top .brand em{font-style:normal; color:var(--caramel)}
+#closeBtn{font-family:var(--mono); font-size:11px; letter-spacing:.24em; border:1px solid var(--line-d); padding:10px 20px 9px; border-radius:2px; color:var(--ivory); transition:border-color .3s, background .3s, color .3s}
+#closeBtn:hover{background:var(--ivory); color:var(--black); border-color:var(--ivory)}
+.ov-links{flex:1; display:flex; flex-direction:column; justify-content:center; padding:16px 0}
+.ov-links li{border-bottom:1px solid var(--line-d)}
+.ov-links li:first-child{border-top:1px solid var(--line-d)}
+.ov-links a{
+  display:flex; align-items:baseline; gap:clamp(14px,3vw,34px);
+  padding:clamp(12px,2.2vh,20px) 0; position:relative;
+  transition:padding-left .45s var(--ease);
+}
+.ov-links a:hover{padding-left:clamp(10px,2vw,26px)}
+.ov-links .no{font-family:var(--mono); font-size:10px; letter-spacing:.2em; color:var(--caramel)}
+.ov-links .name{
+  font-family:var(--serif); font-weight:340; font-size:clamp(30px,5.4vw,64px);
+  line-height:1; letter-spacing:-.01em; text-transform:uppercase;
+  transition:font-style .2s, color .3s;
+}
+.ov-links a:hover .name{font-style:italic; color:var(--caramel)}
+.ov-links .tm{margin-left:auto; font-family:var(--mono); font-size:10px; letter-spacing:.2em; opacity:.55}
+.ov-foot{display:flex; flex-wrap:wrap; gap:12px 30px; justify-content:space-between; padding-top:18px; font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; opacity:.65}
+body.lock{overflow:hidden}
+
+/* ---------- custom cursor ---------- */
+#cur,#curTag{position:fixed; top:0; left:0; z-index:95; pointer-events:none; opacity:0}
+#cur{width:7px; height:7px; border-radius:50%; background:var(--caramel); transform:translate(-50%,-50%)}
+#curTag{
+  transform:translate(-50%,-50%); display:flex; align-items:center; justify-content:center;
+  width:64px; height:64px; border-radius:50%; border:1px solid var(--caramel);
+  color:var(--ivory); background:rgba(22,17,9,.55);
+  font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase;
+  transition:width .3s var(--ease), height .3s var(--ease), opacity .3s;
+}
+#curTag.big{width:86px; height:86px}
+#curTag.on{opacity:1}
+html.cur-on, html.cur-on a, html.cur-on button, html.cur-on li.mi{cursor:none}
+
+/* ---------- peek (menu hover image) ---------- */
+#peek{
+  position:fixed; z-index:66; top:0; left:0; width:clamp(200px,22vw,300px); aspect-ratio:4/5;
+  pointer-events:none; opacity:0; transform:translate(-50%,-54%) rotate(-2deg) scale(.94);
+  transition:opacity .35s var(--ease), transform .35s var(--ease);
+  background:var(--paper); border:1px solid var(--line); overflow:hidden;
+  box-shadow:0 30px 60px rgba(15,11,6,.35);
+}
+#peek.on{opacity:1; transform:translate(-50%,-54%) rotate(-2deg) scale(1)}
+#peek img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+#peek .word{
+  position:absolute; inset:0; display:none; align-items:center; justify-content:center;
+  font-family:var(--serif); font-style:italic; font-weight:340;
+  font-size:clamp(34px,3vw,48px); color:var(--coffee);
+}
+#peek.wordmode img{display:none}
+#peek.wordmode .word{display:flex}
+
+/* ============ SECTIONS ============ */
+
+/* ---- opening / hero ---- */
+#day{position:relative; height:100svh; min-height:620px; background:var(--black); color:var(--ivory); overflow:hidden}
+#heroMedia{position:absolute; inset:0; will-change:transform}
+#heroMedia .ph{position:absolute; inset:0}
+#heroMedia img.kb{animation:kenburns 38s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1.06) translateY(-.6%)}to{transform:scale(1.16) translateY(.8%)}}
+#heroShade{position:absolute; inset:0; background:
+  linear-gradient(to top, rgba(15,11,6,.82), rgba(15,11,6,.15) 46%, rgba(15,11,6,.42)),
+  linear-gradient(100deg, rgba(15,11,6,.66), transparent 55%)}
+.hero-inner{position:absolute; inset:0; z-index:3; display:flex; flex-direction:column; justify-content:flex-end; padding:0 clamp(20px,4vw,52px) clamp(74px,10vh,110px)}
+.hero-kicker{color:var(--caramel); margin-bottom:clamp(14px,2.4vh,26px)}
+h1{font-size:clamp(58px,12.5vw,188px); line-height:.9; letter-spacing:-.02em; font-weight:340; text-transform:uppercase; font-family:var(--serif)}
+h1 .dotc{color:var(--caramel)}
+.hero-sub{display:flex; flex-wrap:wrap; align-items:baseline; gap:14px clamp(20px,4vw,60px); margin-top:clamp(16px,3vh,30px)}
+.hero-sub .sub-serif{color:var(--ivory)}
+.hero-sub .tiny{font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; opacity:.66}
+.hero-cue{
+  position:absolute; right:clamp(20px,4vw,52px); bottom:clamp(26px,4vh,44px); z-index:3;
+  display:flex; flex-direction:column; align-items:flex-end; gap:12px;
+  font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--ivory); opacity:.8;
+}
+.hero-cue .cue-line{width:1px; height:52px; background:var(--ivory); opacity:.5; transform-origin:top; animation:cue 2.6s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0)}45%{transform:scaleY(1)}100%{transform:scaleY(1); opacity:0}}
+@media(max-width:720px){ .hero-cue{display:none} }
+.js #day:not(.live) .hero-inner{opacity:0}
+#day .hero-inner{transition:opacity .9s var(--ease) .15s}
+
+/* dawn opening overlay — built by JS */
+#dawn{
+  position:fixed; inset:0; z-index:64; background:var(--black-3); color:var(--ivory);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px;
+  transition:opacity 1.5s var(--ease); text-align:center; padding:24px;
+}
+#dawn.off{opacity:0; pointer-events:none}
+#dawn .d-time{font-family:var(--mono); font-size:clamp(26px,4.5vw,42px); letter-spacing:.3em; text-indent:.3em; opacity:0; transform:translateY(10px); transition:opacity .8s var(--ease), transform .8s var(--ease)}
+#dawn .d-time .colon{animation:blink 1.1s steps(1) infinite; color:var(--caramel)}
+@keyframes blink{50%{opacity:.15}}
+#dawn .d-rule{width:0; height:1px; background:var(--caramel); transition:width 1s var(--ease)}
+#dawn .d-line{font-family:var(--serif); font-style:italic; font-weight:340; font-size:clamp(19px,2.6vw,30px); opacity:0; transform:translateY(12px); transition:opacity .9s var(--ease), transform .9s var(--ease)}
+#dawn .d-sub{font-family:var(--mono); font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:var(--stone); opacity:0; transition:opacity .9s var(--ease)}
+#dawn.step1 .d-time{opacity:1; transform:none}
+#dawn.step2 .d-rule{width:clamp(70px,10vw,120px)}
+#dawn.step3 .d-line{opacity:1; transform:none}
+#dawn.step4 .d-sub{opacity:.8}
+
+/* ---- manifesto strip ---- */
+#manifesto{background:var(--ivory); color:var(--ink); border-bottom:1px solid var(--line)}
+.man-in{max-width:1500px; margin:0 auto; padding:clamp(60px,9vw,120px) clamp(20px,4vw,52px); display:grid; grid-template-columns:1fr 1.4fr; gap:clamp(24px,4vw,80px); align-items:start}
+.man-in .mono{color:var(--coffee)}
+.man-serif{font-family:var(--serif); font-weight:340; font-size:clamp(24px,3.2vw,44px); line-height:1.3; letter-spacing:-.01em}
+.man-serif em{font-style:italic; color:var(--coffee)}
+.man-meta{font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--stone); margin-top:26px}
+@media(max-width:860px){ .man-in{grid-template-columns:1fr} }
+
+/* ---- shared section frame ---- */
+.frame{max-width:1500px; margin:0 auto; padding:0 clamp(20px,4vw,52px)}
+.chap{padding:clamp(80px,12vw,170px) 0}
+.chap-head{display:flex; flex-direction:column; gap:clamp(16px,2.4vw,28px); margin-bottom:clamp(40px,6vw,84px)}
+.chap-head .kicker{font-family:var(--mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase}
+.chap-cols{display:grid; grid-template-columns:1.1fr 1fr; gap:clamp(28px,5vw,90px); align-items:center}
+@media(max-width:900px){ .chap-cols{grid-template-columns:1fr} }
+
+/* ============ CHAPTER 01 — ORIGIN ============ */
+#origin{background:var(--paper); color:var(--ink)}
+#origin .kicker{color:var(--coffee)}
+.origin-grid{display:grid; grid-template-columns:1.5fr 1fr; gap:clamp(20px,3vw,44px); align-items:end}
+.origin-main .ph{aspect-ratio:16/10}
+.origin-side{display:flex; flex-direction:column; gap:18px}
+.origin-detail{align-self:flex-end; width:min(62%,300px); margin-right:-6px}
+.origin-detail .ph{aspect-ratio:4/5; border:6px solid var(--cream); box-shadow:0 24px 50px rgba(36,27,18,.22)}
+.origin-detail figcaption{font-family:var(--mono); font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); margin-top:10px; text-align:right}
+.origin-meta{display:flex; flex-wrap:wrap; gap:10px 26px; font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--coffee)}
+.origin-meta b{font-weight:500; color:var(--ink)}
+@media(max-width:900px){
+  .origin-grid{grid-template-columns:1fr}
+  .origin-detail{align-self:flex-start; margin-right:0; width:min(56%,240px); margin-top:-46px; position:relative; z-index:2}
+}
+/* origin map — field notes */
+.journal{margin-top:clamp(56px,8vw,110px); border-top:1px solid var(--line); padding-top:clamp(34px,5vw,58px)}
+.journal-top{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 30px; align-items:baseline; margin-bottom:clamp(22px,3vw,40px)}
+.journal-top h3{font-family:var(--serif); font-weight:400; font-size:clamp(22px,2.6vw,34px); letter-spacing:-.01em}
+.journal-top .mono{color:var(--stone)}
+.map-wrap{position:relative; border:1px solid var(--line); background:
+  repeating-linear-gradient(0deg, transparent 0 43px, rgba(36,27,18,.05) 43px 44px),
+  repeating-linear-gradient(90deg, transparent 0 43px, rgba(36,27,18,.05) 43px 44px),
+  var(--cream)}
+.map-wrap svg{display:block; width:100%; height:auto}
+.journal-data{margin-top:clamp(26px,4vw,44px); display:grid; grid-template-columns:repeat(5,1fr); border-top:1px solid var(--line)}
+.jd{padding:18px 18px 22px 0; border-right:1px solid var(--line)}
+.jd:last-child{border-right:0}
+.jd .k{font-family:var(--mono); font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--stone); display:block; margin-bottom:8px}
+.jd .v{font-family:var(--serif); font-size:clamp(16px,1.5vw,21px); font-weight:400; line-height:1.3}
+.journal-note{margin-top:16px; font-family:var(--mono); font-size:9.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--stone)}
+@media(max-width:900px){ .journal-data{grid-template-columns:repeat(2,1fr)} .jd{border-bottom:1px solid var(--line)} .jd:nth-child(2n){border-right:0} }
+.route-ants{stroke-dasharray:2 8; animation:ants 26s linear infinite}
+@keyframes ants{to{stroke-dashoffset:-400}}
+
+/* ============ CHAPTER 02 — ROAST ============ */
+#roast{background:var(--black); color:var(--ivory)}
+#roast .kicker{color:var(--caramel)}
+.roast-grid{display:grid; grid-template-columns:1fr 1.25fr; gap:clamp(28px,5vw,80px); align-items:center}
+.roast-copy .body-copy{opacity:.8}
+.roast-meta{display:flex; flex-wrap:wrap; gap:10px 26px; font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); margin-top:30px}
+.roast-media .ph{aspect-ratio:4/3; clip-path:inset(8% 6% 8% 6%); transition:clip-path 1.6s var(--ease)}
+.roast-media.in .ph{clip-path:inset(0 0 0 0)}
+.roast-media figcaption{font-family:var(--mono); font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); margin-top:14px; display:flex; justify-content:space-between; gap:12px}
+@media(max-width:900px){ .roast-grid{grid-template-columns:1fr} }
+/* roast profile */
+.profile{margin-top:clamp(64px,9vw,130px)}
+.profile-top{display:flex; justify-content:space-between; align-items:baseline; gap:20px; flex-wrap:wrap; margin-bottom:clamp(30px,4vw,54px)}
+.profile-top .t{font-family:var(--mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--stone)}
+.profile-top .ours{font-family:var(--serif); font-style:italic; font-size:clamp(17px,1.8vw,22px); color:var(--caramel)}
+.deg-track{position:relative; height:2px; background:linear-gradient(90deg,#d9b98c,#a5713f 34%,#6e4b30 60%,#3d2817 82%,#1a110a); margin:0 0 clamp(34px,4vw,50px)}
+.deg-marker{position:absolute; top:-7px; left:46%; width:16px; height:16px; border-radius:50%; background:var(--caramel); border:3px solid var(--black); transform:translateX(-50%); box-shadow:0 0 0 1px var(--caramel)}
+.deg-marker i{position:absolute; left:50%; top:-34px; transform:translateX(-50%); font-style:normal; font-family:var(--mono); font-size:9px; letter-spacing:.22em; color:var(--caramel); white-space:nowrap}
+.deg-stages{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(20px,3vw,44px)}
+.stage{border-top:1px solid var(--line-d); padding-top:22px; display:flex; flex-direction:column; gap:10px}
+.stage .bean{width:clamp(46px,4.5vw,64px); height:clamp(46px,4.5vw,64px); border-radius:50%; position:relative; margin-bottom:6px; transition:transform .5s var(--ease)}
+.stage:hover .bean{transform:translateY(-6px) rotate(8deg)}
+.stage .bean::after{content:""; position:absolute; left:50%; top:12%; bottom:12%; width:2px; transform:translateX(-50%) rotate(14deg); background:rgba(0,0,0,.4); border-radius:2px}
+.stage .bean.l{background:radial-gradient(circle at 34% 30%,#e2c49a,#c49a6b 60%,#a5713f)}
+.stage .bean.m{background:radial-gradient(circle at 34% 30%,#a5713f,#7c5433 55%,#5a3a22)}
+.stage .bean.d{background:radial-gradient(circle at 34% 30%,#4a3018,#2c1c0f 60%,#16110a)}
+.stage .nm{font-family:var(--serif); font-weight:400; text-transform:uppercase; letter-spacing:.02em; font-size:clamp(19px,1.9vw,26px)}
+.stage .nts{font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--stone)}
+.stage .verdict{font-family:var(--serif); font-style:italic; font-size:15px; color:var(--ivory); opacity:.75; margin-top:4px}
+.stage.is-ours .nm{color:var(--caramel)}
+.stage.is-ours .verdict{color:var(--caramel); opacity:1}
+@media(max-width:720px){ .deg-stages{grid-template-columns:1fr} .deg-marker{left:50%} }
+
+/* ============ CHAPTER 03 — GRIND ============ */
+#grind{background:var(--black-2); color:var(--ivory); position:relative; overflow:hidden}
+#grind .kicker{color:var(--caramel)}
+.grind-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:clamp(28px,5vw,80px); align-items:center}
+.grind-media{position:relative}
+.grind-media .ph{aspect-ratio:4/5; max-height:78vh}
+.grind-word{position:relative}
+.grind-data{display:flex; flex-wrap:wrap; gap:10px 26px; font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); margin-top:30px}
+.grind-note{font-family:var(--mono); font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--caramel); margin-top:26px}
+@media(max-width:900px){ .grind-grid{grid-template-columns:1fr} }
+/* drifting grounds */
+.g-p{position:absolute; top:-6%; width:3px; height:3px; border-radius:50%; background:var(--caramel); opacity:0; animation:fall linear infinite}
+@keyframes fall{
+  0%{transform:translateY(0) translateX(0); opacity:0}
+  12%{opacity:.4}
+  85%{opacity:.28}
+  100%{transform:translateY(108vh) translateX(34px); opacity:0}
+}
+
+/* ============ CHAPTER 04 — BREW ============ */
+#brew{background:var(--ivory); color:var(--ink)}
+#brew .kicker{color:var(--coffee)}
+.brew-top{display:grid; grid-template-columns:1.2fr 1fr; gap:clamp(28px,5vw,80px); align-items:center}
+.brew-media .ph{aspect-ratio:4/5}
+.brew-media figcaption{font-family:var(--mono); font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); margin-top:12px; display:flex; justify-content:space-between; gap:10px}
+.recipe{display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--line); margin-top:clamp(40px,6vw,70px)}
+.recipe div{padding:16px 16px 18px; border-right:1px solid var(--line)}
+.recipe div:last-child{border-right:0}
+.recipe .k{font-family:var(--mono); font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); display:block; margin-bottom:6px}
+.recipe .v{font-family:var(--serif); font-size:clamp(17px,1.7vw,23px)}
+@media(max-width:900px){ .brew-top{grid-template-columns:1fr} .recipe{grid-template-columns:repeat(2,1fr)} .recipe div{border-bottom:1px solid var(--line)} .recipe div:nth-child(2n){border-right:0} }
+/* interactive brew stage */
+.stage-wrap{height:340vh; position:relative; margin-top:clamp(70px,10vw,140px)}
+.brew-stage{position:sticky; top:0; height:100svh; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:clamp(24px,4vw,70px); padding:0 clamp(20px,4vw,52px); max-width:1500px; margin:0 auto}
+.vessel-col{display:flex; flex-direction:column; align-items:center; gap:20px}
+#brewSvg{width:min(52vw,340px); height:auto; overflow:visible}
+#brewTimer{font-family:var(--mono); font-size:clamp(20px,2.4vw,30px); letter-spacing:.24em; color:var(--coffee)}
+#brewState{font-family:var(--mono); font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--stone); min-height:14px}
+.brew-steps{display:flex; flex-direction:column}
+.b-step{border-top:1px solid var(--line); padding:clamp(14px,2.2vh,22px) 0; display:grid; grid-template-columns:44px 1fr auto; gap:16px; align-items:baseline; opacity:.32; transition:opacity .5s var(--ease), padding-left .5s var(--ease)}
+.b-step:last-child{border-bottom:1px solid var(--line)}
+.b-step .n{font-family:var(--mono); font-size:10px; letter-spacing:.2em; color:var(--coffee)}
+.b-step .t{font-family:var(--serif); font-weight:400; text-transform:uppercase; font-size:clamp(20px,2.4vw,32px); letter-spacing:.01em; line-height:1.05}
+.b-step .d{font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--stone); text-align:right}
+.b-step.active{opacity:1; padding-left:12px}
+.b-step.active .t{color:var(--coffee)}
+.b-step.done{opacity:.55}
+@media(max-width:900px){
+  .stage-wrap{height:300vh}
+  .brew-stage{grid-template-columns:1fr; align-content:center; gap:26px}
+  #brewSvg{width:min(56vw,230px)}
+  .b-step{grid-template-columns:36px 1fr; }
+  .b-step .d{grid-column:2; text-align:left}
+}
+#brewStream{transition:opacity .4s}
+.steam-p{opacity:0; transition:opacity 1s var(--ease)}
+.steam-on .steam-p{opacity:.7; animation:steamUp 3.4s ease-in-out infinite}
+.steam-p.s2{animation-delay:1.2s}
+@keyframes steamUp{0%{transform:translateY(6px); opacity:0}30%{opacity:.7}100%{transform:translateY(-14px); opacity:0}}
+
+/* ============ CHAPTER 05 — POUR ============ */
+#pour{background:var(--black-3); color:var(--ivory); position:relative}
+.pour-bleed{position:relative; height:118vh; min-height:640px; overflow:hidden}
+.pour-bleed .ph{position:absolute; inset:-6% 0; }
+.pour-bleed .ph{clip-path:inset(10% 7% 10% 7%); transition:clip-path 1.8s var(--ease)}
+.pour-bleed.in .ph{clip-path:inset(0 0 0 0)}
+.pour-bleed img{transition:transform 2.2s var(--ease), filter 2.2s var(--ease); transform:scale(1.12); filter:blur(8px) brightness(.7)}
+.pour-bleed.in img{transform:scale(1.03); filter:blur(0) brightness(1)}
+.pour-shade{position:absolute; inset:0; background:linear-gradient(to top, rgba(15,11,6,.78), transparent 42%, rgba(15,11,6,.5))}
+.pour-text{position:absolute; left:clamp(20px,5vw,64px); bottom:clamp(44px,9vh,96px); z-index:3; max-width:min(88vw,720px)}
+.pour-text .kicker{color:var(--caramel); margin-bottom:18px}
+.pour-text .big{font-family:var(--serif); font-weight:340; font-size:clamp(44px,8vw,120px); line-height:.98; letter-spacing:-.015em}
+.pour-text .big em{font-style:italic; color:var(--caramel)}
+.pour-text .mono{color:var(--stone); margin-top:20px; display:block}
+.pour-tiny{position:absolute; right:clamp(20px,5vw,64px); bottom:clamp(44px,9vh,96px); z-index:3; max-width:280px; text-align:right; font-family:var(--serif); font-style:italic; font-size:15px; line-height:1.6; color:var(--ivory); opacity:.72}
+@media(max-width:820px){ .pour-tiny{position:static; text-align:left; padding:0 clamp(20px,5vw,40px) clamp(40px,6vh,60px); max-width:none} #pour{padding-bottom:0} }
+
+/* ============ THE CUP ============ */
+#cup{background:var(--cream); color:var(--ink); overflow:hidden}
+.cup-grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,80px); align-items:center; min-height:76vh}
+.cup-word{font-family:var(--serif); font-weight:340; text-transform:uppercase; font-size:clamp(42px,6.6vw,104px); line-height:1.0; letter-spacing:-.01em}
+.cup-word .it{font-style:italic; color:var(--coffee)}
+.cup-cap{font-family:var(--mono); font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--coffee); margin-bottom:22px; display:flex; align-items:center; gap:14px}
+.cup-cap::before{content:""; width:40px; height:1px; background:var(--coffee); opacity:.5}
+.cup-note{font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); margin-top:28px}
+.cup-visual{display:flex; align-items:center; justify-content:center; position:relative}
+.cup-visual svg{width:min(66vw,420px); height:auto; overflow:visible}
+.ring-stain{position:absolute; width:min(78vw,520px); aspect-ratio:1; border-radius:50%; border:1.5px solid rgba(110,75,48,.16); pointer-events:none}
+.ring-stain::after{content:""; position:absolute; inset:9%; border-radius:50%; border:1px solid rgba(110,75,48,.1)}
+.cup-steam{opacity:0; transition:opacity 1.2s var(--ease)}
+.cup-visual.in .cup-steam{opacity:1}
+.cs{animation:steamUp 4s ease-in-out infinite}
+.cs.c2{animation-delay:1.4s}
+.cs.c3{animation-delay:2.4s}
+@media(max-width:900px){ .cup-grid{grid-template-columns:1fr; min-height:auto} .cup-visual{order:-1} }
+
+/* ============ CHAPTER 06 — FIRST SIP ============ */
+#sip{background:var(--ivory); color:var(--ink)}
+#sip .kicker{color:var(--coffee)}
+.sip-grid{display:grid; grid-template-columns:1fr 1.2fr; gap:clamp(28px,5vw,80px); align-items:center}
+.sip-media .ph{aspect-ratio:4/5}
+.sip-media figcaption{font-family:var(--mono); font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); margin-top:12px; display:flex; justify-content:space-between; gap:10px}
+.warm-wash{position:relative}
+.warm-wash::after{content:""; position:absolute; inset:0; background:radial-gradient(120% 90% at 80% 10%, rgba(195,154,107,.16), transparent 60%); pointer-events:none}
+@media(max-width:900px){ .sip-grid{grid-template-columns:1fr} }
+
+/* ============ MENU ============ */
+#menu{background:var(--paper); color:var(--ink); border-top:1px solid var(--line)}
+#menu .kicker{color:var(--coffee)}
+.menu-head{display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:18px 40px; margin-bottom:clamp(40px,6vw,74px)}
+.menu-head .right{font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); text-align:right; line-height:2}
+.cats{border-top:1px solid var(--ink)}
+.cat{border-bottom:1px solid var(--ink)}
+.cat-h{
+  width:100%; display:grid; grid-template-columns:auto 1fr auto auto; align-items:baseline; gap:clamp(14px,2.5vw,34px);
+  padding:clamp(20px,3vh,32px) 0; text-align:left;
+}
+.cat-h .no{font-family:var(--mono); font-size:10px; letter-spacing:.2em; color:var(--coffee)}
+.cat-h .nm{
+  font-family:var(--serif); font-weight:340; text-transform:uppercase; letter-spacing:0;
+  font-size:clamp(30px,5vw,66px); line-height:1; transition:font-style .15s, color .3s var(--ease), padding-left .45s var(--ease);
+}
+.cat-h:hover .nm{font-style:italic; color:var(--coffee); padding-left:14px}
+.cat-h .cnt{font-family:var(--mono); font-size:10px; letter-spacing:.2em; color:var(--stone)}
+.cat-h .x{font-family:var(--serif); font-size:clamp(22px,2.6vw,34px); font-weight:300; color:var(--coffee); transition:transform .5s var(--ease)}
+.cat.open .cat-h .x{transform:rotate(45deg)}
+.cat-b{display:grid; grid-template-rows:1fr; transition:grid-template-rows .6s var(--ease), opacity .5s var(--ease)}
+.js .cat:not(.open) .cat-b{grid-template-rows:0fr; opacity:0}
+.cat-b-in{overflow:hidden; min-height:0}
+.items{padding:4px 0 clamp(24px,4vh,42px)}
+.mi{
+  display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) auto; align-items:baseline; gap:14px clamp(14px,3vw,44px);
+  padding:13px 10px; border-top:1px dashed var(--line); position:relative;
+  transition:background .35s var(--ease), padding-left .35s var(--ease);
+}
+.mi:hover{background:rgba(195,154,107,.12); padding-left:20px}
+.mi-n{font-family:var(--serif); font-weight:400; font-size:clamp(17px,1.7vw,23px); letter-spacing:.005em}
+.mi-d{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--stone)}
+.mi-p{font-family:var(--mono); font-size:12px; letter-spacing:.1em; color:var(--coffee)}
+.mi-p::before{content:"£"; opacity:.6; margin-right:2px; font-size:10px}
+.menu-foot{margin-top:clamp(28px,4vw,44px); display:flex; flex-wrap:wrap; gap:10px 34px; font-family:var(--mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--stone)}
+.mobile-peek{display:none}
+@media(max-width:820px){
+  .mi{grid-template-columns:1fr auto}
+  .mi-d{grid-column:1 / -1}
+  .mobile-peek.show{display:block; margin:0 0 26px; border:1px solid var(--line)}
+  .mobile-peek .ph{aspect-ratio:16/10; background:var(--cream)}
+  .mobile-peek figcaption{font-family:var(--mono); font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); padding:10px 0 0}
+  .mp-word{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-style:italic; font-weight:340; font-size:52px; color:var(--coffee)}
+}
+
+/* ============ FOOD ============ */
+#food{background:var(--cream); color:var(--ink)}
+.food-grid{display:grid; grid-template-columns:1.2fr 1fr; gap:clamp(28px,5vw,80px); align-items:center}
+.food-media .ph{aspect-ratio:4/3}
+.food-media figcaption{font-family:var(--mono); font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); margin-top:12px; display:flex; justify-content:space-between; gap:10px}
+.food-word{font-family:var(--serif); font-weight:340; text-transform:uppercase; font-size:clamp(46px,7vw,112px); line-height:.98; letter-spacing:-.01em}
+.food-word .it{font-style:italic; color:var(--coffee)}
+.food-tray{margin-top:30px; border-top:1px solid var(--line)}
+.food-tray li{display:flex; justify-content:space-between; gap:20px; padding:12px 0; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10.5px; letter-spacing:.18em; text-transform:uppercase}
+.food-tray .t{color:var(--coffee)}
+@media(max-width:900px){ .food-grid{grid-template-columns:1fr} }
+
+/* ============ THE SPACE ============ */
+#space{background:var(--ivory); color:var(--ink)}
+#space .kicker{color:var(--coffee)}
+.room{position:relative; margin-top:clamp(36px,5vw,60px)}
+.room .ph{aspect-ratio:16/9.6}
+.rl{
+  position:absolute; left:var(--x); top:var(--y); z-index:4; transform:translate(-50%,-50%);
+  font-family:var(--mono); font-size:9.5px; letter-spacing:.24em; text-transform:uppercase; color:var(--ivory);
+  text-shadow:0 1px 8px rgba(15,11,6,.7); display:flex; align-items:center; gap:8px;
+  opacity:.85; transition:opacity .4s; will-change:transform;
+}
+.rl i{width:7px; height:7px; border-radius:50%; border:1.5px solid var(--caramel); background:transparent; flex:none; transition:background .3s}
+.rl::after{content:""; width:26px; height:1px; background:var(--caramel); opacity:0; transform:scaleX(0); transform-origin:left; transition:transform .5s var(--ease), opacity .4s}
+.rl:hover{opacity:1}
+.rl:hover i{background:var(--caramel)}
+.rl:hover::after{opacity:1; transform:scaleX(1)}
+.room-shade{position:absolute; inset:0; background:linear-gradient(to top, rgba(15,11,6,.42), transparent 40%)}
+.materials{display:flex; flex-wrap:wrap; gap:10px 30px; margin-top:22px; font-family:var(--mono); font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--stone)}
+.materials b{color:var(--ink); font-weight:500}
+
+/* ============ time chapters ============ */
+.timechap{position:relative; color:var(--ivory); overflow:hidden}
+.timechap .ph-bg{position:absolute; inset:0}
+.timechap .ph-bg img{will-change:transform}
+.timechap .shade{position:absolute; inset:0}
+.tc-inner{position:relative; z-index:3; min-height:96vh; display:flex; flex-direction:column; justify-content:center; padding:clamp(80px,12vh,140px) clamp(20px,5vw,64px)}
+.tc-time{font-family:var(--mono); font-size:clamp(13px,1.4vw,16px); letter-spacing:.34em; color:var(--caramel)}
+.tc-serif{font-family:var(--serif); font-weight:340; font-size:clamp(46px,8.6vw,132px); line-height:1; letter-spacing:-.015em; margin-top:clamp(18px,3vh,30px); text-transform:uppercase}
+.tc-serif em{font-style:italic; color:var(--caramel)}
+.tc-tiny{max-width:44ch; margin-top:clamp(18px,3vh,28px); font-size:15px; font-weight:300; line-height:1.75; opacity:.82}
+#afternoon{background:#2a1f13}
+#afternoon .shade{background:linear-gradient(90deg, rgba(20,14,8,.88) 8%, rgba(20,14,8,.35) 55%, rgba(20,14,8,.15))}
+#golden{background:#241505}
+#golden .shade{background:linear-gradient(100deg, rgba(16,10,4,.9) 12%, rgba(16,10,4,.38) 60%, rgba(16,10,4,.12))}
+#closing{background:var(--black-3)}
+#closing .ph-bg img{filter:brightness(.55) saturate(.85)}
+#closing .shade{background:radial-gradient(120% 100% at 50% 100%, rgba(15,11,6,.9), rgba(15,11,6,.55) 55%, rgba(15,11,6,.72))}
+#closing .tc-inner{align-items:center; text-align:center; justify-content:center}
+#closing .tc-tiny{margin-left:auto; margin-right:auto}
+.closing-back{margin-top:34px; font-family:var(--mono); font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:var(--stone)}
+.closing-back b{color:var(--caramel); font-weight:500}
+
+/* ============ FINAL CTA ============ */
+#cta{background:var(--black); color:var(--ivory); text-align:left}
+.cta-in{max-width:1500px; margin:0 auto; padding:clamp(90px,14vw,190px) clamp(20px,4vw,52px)}
+.cta-in .kicker{color:var(--caramel); margin-bottom:clamp(20px,3vh,34px)}
+.cta-big{font-family:var(--serif); font-weight:340; text-transform:uppercase; font-size:clamp(52px,9.5vw,150px); line-height:.96; letter-spacing:-.015em}
+.cta-big em{font-style:italic; color:var(--caramel)}
+.cta-btns{display:flex; flex-wrap:wrap; gap:16px; margin-top:clamp(34px,5vh,54px)}
+.btn{
+  display:inline-flex; align-items:center; gap:12px;
+  font-family:var(--mono); font-size:11px; letter-spacing:.26em; text-transform:uppercase;
+  padding:17px 34px 16px; border:1px solid var(--ivory); border-radius:2px; color:var(--ivory);
+  position:relative; overflow:hidden; isolation:isolate; transition:color .4s var(--ease);
+}
+.btn::before{content:""; position:absolute; inset:0; background:var(--ivory); transform:translateY(101%); transition:transform .45s var(--ease); z-index:-1}
+.btn:hover{color:var(--black)}
+.btn:hover::before{transform:translateY(0)}
+.btn.solid{background:var(--caramel); border-color:var(--caramel); color:var(--black)}
+.btn.solid::before{background:var(--ivory)}
+
+/* ============ VISIT ============ */
+#visit{background:var(--paper); color:var(--ink); border-top:1px solid var(--line)}
+#visit .kicker{color:var(--coffee)}
+.visit-grid{display:grid; grid-template-columns:1fr 1.15fr; gap:clamp(30px,5vw,80px); align-items:start}
+.v-rows{border-top:1px solid var(--ink)}
+.v-row{display:grid; grid-template-columns:120px 1fr; gap:18px; padding:18px 0; border-bottom:1px solid var(--line); align-items:baseline}
+.v-row .k{font-family:var(--mono); font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--stone)}
+.v-row .v{font-family:var(--serif); font-size:clamp(18px,1.9vw,25px); font-weight:400; line-height:1.35}
+.v-row .v small{display:block; font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--stone); margin-top:5px}
+.v-row a.v:hover{color:var(--coffee); font-style:italic}
+.loc-map{border:1px solid var(--line); background:var(--cream); position:relative}
+.loc-map svg{display:block; width:100%; height:auto}
+.loc-foot{margin-top:14px; display:flex; flex-wrap:wrap; gap:10px 28px; justify-content:space-between; font-family:var(--mono); font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--stone)}
+.pulse-ring{transform-origin:center; animation:pring 2.6s var(--ease) infinite}
+@keyframes pring{0%{transform:scale(.4); opacity:.9}80%{transform:scale(1.6); opacity:0}100%{opacity:0}}
+@media(max-width:900px){ .visit-grid{grid-template-columns:1fr} .v-row{grid-template-columns:96px 1fr} }
+
+/* ============ FOOTER ============ */
+footer{background:var(--black-3); color:var(--ivory); overflow:hidden}
+.foot-in{max-width:1500px; margin:0 auto; padding:clamp(80px,11vw,160px) clamp(20px,4vw,52px) clamp(36px,5vw,60px)}
+.foot-brand{font-family:var(--serif); font-weight:340; font-size:clamp(90px,20vw,300px); line-height:.85; letter-spacing:-.02em; color:transparent; -webkit-text-stroke:1px rgba(242,234,217,.5); transition:color 1s var(--ease)}
+.foot-brand:hover{color:var(--ivory)}
+.foot-mid{display:flex; flex-wrap:wrap; gap:14px 40px; justify-content:space-between; align-items:baseline; margin-top:clamp(30px,5vw,60px); padding-top:26px; border-top:1px solid var(--line-d)}
+.foot-mid .tri{font-family:var(--mono); font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:var(--stone)}
+.foot-mid .morn{font-family:var(--serif); font-style:italic; font-weight:340; font-size:clamp(20px,2.6vw,34px); color:var(--caramel)}
+.foot-legal{display:flex; flex-wrap:wrap; gap:8px 30px; justify-content:space-between; margin-top:clamp(30px,5vw,54px); font-family:var(--mono); font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:rgba(242,234,217,.4)}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001s !important; animation-iteration-count:1 !important; transition-duration:.001s !important}
+  .js [data-reveal]{opacity:1; transform:none}
+  .js .lm>span{transform:none}
+  #heroMedia img.kb{animation:none}
+  .g-p{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="grain" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"></div>
+<div id="curTag" aria-hidden="true"><span>view</span></div>
+<div id="peek" aria-hidden="true"><img alt=""><span class="word"></span></div>
+
+<!-- ============ FIXED NAV ============ -->
+<header id="nav">
+  <a class="brand" href="#day" data-cursor="">STILL<em>.</em><small>COFFEE HOUSE</small></a>
+  <div class="nav-r">
+    <span class="hours">OPEN / 07:00 — 18:00</span>
+    <button class="menu-btn" id="menuBtn" aria-haspopup="dialog" data-cursor="EXPLORE">MENU</button>
+  </div>
+</header>
+
+<!-- ============ FULLSCREEN MENU ============ -->
+<div id="overlay" role="dialog" aria-modal="true" aria-label="Site menu" aria-hidden="true">
+  <div class="veil" aria-hidden="true"></div>
+  <div class="ov-inner">
+    <div class="ov-top">
+      <span class="brand">STILL<em style="font-style:normal;color:var(--caramel)">.</em></span>
+      <button id="closeBtn" data-cursor="EXPLORE">CLOSE</button>
+    </div>
+    <ul class="ov-links">
+      <li><a href="#day" data-cursor="EXPLORE"><span class="no">01</span><span class="name">The Story</span><span class="tm">05:42</span></a></li>
+      <li><a href="#menu" data-cursor="EXPLORE"><span class="no">02</span><span class="name">Coffee</span><span class="tm">07:12</span></a></li>
+      <li><a href="#food" data-cursor="EXPLORE"><span class="no">03</span><span class="name">Food</span><span class="tm">08:30</span></a></li>
+      <li><a href="#space" data-cursor="EXPLORE"><span class="no">04</span><span class="name">The Space</span><span class="tm">09:15</span></a></li>
+      <li><a href="#origin" data-cursor="EXPLORE"><span class="no">05</span><span class="name">Origin</span><span class="tm">06:10</span></a></li>
+      <li><a href="#visit" data-cursor="EXPLORE"><span class="no">06</span><span class="name">Visit</span><span class="tm">ANYTIME</span></a></li>
+    </ul>
+    <div class="ov-foot">
+      <span>OPEN / 07:00 — 18:00 — DAILY</span>
+      <span>18 RIVINGTON ST, LONDON EC2A</span>
+      <span>@STILL.COFFEEHOUSE</span>
+    </div>
+  </div>
+</div>
+
+<!-- story clock -->
+<div id="clock" aria-hidden="true"><span class="dot"></span><span id="clockTxt">05:42 — BEFORE DAWN</span></div>
+
+<main>
+
+<!-- ============ BEFORE DAWN / HERO ============ -->
+<section id="day" data-time="05:42" data-label="BEFORE DAWN" aria-label="Before dawn">
+  <div id="heroMedia">
+    <div class="ph" data-cursor="VIEW">
+      <img class="kb" src="https://image.qwenlm.ai/generated-images/b4e506b7-d1cf-4a00-b765-b7c43275d609/_result.png"
+           alt="The empty STILL. café interior just before dawn — soft blue window light, one warm lamp over the counter"
+           width="1920" height="1080" fetchpriority="high" decoding="async">
+    </div>
+  </div>
+  <div id="heroShade" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <p class="mono hero-kicker lm" style="--d:.05s"><span>COFFEE / RITUAL / DAILY</span></p>
+    <h1>
+      <span class="lm" style="--d:.15s"><span>THE FIRST</span></span>
+      <span class="lm" style="--d:.28s"><span>CUP<span class="dotc">.</span></span></span>
+    </h1>
+    <div class="hero-sub">
+      <p class="sub-serif lm" style="--d:.45s"><span>Before the city wakes.</span></p>
+      <p class="tiny lm" style="--d:.55s"><span>STILL. — A COFFEE HOUSE ON RIVINGTON STREET</span></p>
+    </div>
+  </div>
+  <div class="hero-cue" aria-hidden="true">
+    <span>SCROLL — THE DAY BEGINS</span>
+    <span class="cue-line"></span>
+    <span>05:42</span>
+  </div>
+</section>
+
+<!-- ============ MANIFESTO ============ -->
+<section id="manifesto" aria-label="The idea">
+  <div class="man-in">
+    <div>
+      <p class="mono" data-reveal>ONE CAFÉ — ONE DAY — ONE CUP</p>
+      <p class="man-meta" data-reveal style="--d:.1s">N° 18 RIVINGTON ST / EST. MMXIX</p>
+    </div>
+    <div>
+      <p class="man-serif">
+        <span class="lm" data-reveal style="--d:.05s"><span>This is the story of a single morning,</span></span>
+        <span class="lm" data-reveal style="--d:.14s"><span>told slowly — <em>the way the coffee is made.</em></span></span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 01 — ORIGIN ============ -->
+<section id="origin" class="chap" data-time="06:10" data-label="ORIGIN">
+  <div class="frame">
+    <div class="chap-head">
+      <p class="kicker" data-reveal><span class="rule"></span>CHAPTER 01 — 06:10</p>
+      <h2 class="display">
+        <span class="lm" data-reveal><span>ORIGIN</span></span>
+      </h2>
+      <p class="sub-serif" style="color:var(--coffee)">
+        <span class="lm" data-reveal style="--d:.12s"><span>Every cup begins somewhere else.</span></span>
+      </p>
+    </div>
+
+    <div class="origin-grid">
+      <figure class="origin-main" data-reveal>
+        <div class="ph" data-cursor="VIEW" data-plx="0.05">
+          <img src="https://image.qwenlm.ai/generated-images/3c3375a7-412f-42a6-a8a4-51501270e124/_result.png"
+               alt="Terraced coffee farm in the Gedeo highlands of Ethiopia at sunrise, fog in the valley below"
+               width="1920" height="1200" loading="lazy" decoding="async">
+        </div>
+      </figure>
+      <div class="origin-side">
+        <p class="body-copy" data-reveal style="--d:.1s">Before it is a drink, coffee is a place. Ours is a smallholding in the Gedeo highlands of Ethiopia — heirloom trees grown under false banana, cherries picked by hand in the week they turn red.</p>
+        <figure class="origin-detail" data-reveal style="--d:.2s">
+          <div class="ph" data-cursor="VIEW">
+            <img src="https://image.qwenlm.ai/generated-images/3c3375a7-412f-42a6-a8a4-51501270e124/_result.png"
+                 alt="Detail of the same hillside — close rows of coffee shrubs in morning mist"
+                 width="1920" height="1200" loading="lazy" decoding="async"
+                 style="object-position:62% 68%; transform:scale(2.4); transform-origin:62% 68%">
+          </div>
+          <figcaption>FIG. 01 — THE HILLside, CLOSER</figcaption>
+        </figure>
+        <div class="origin-meta" data-reveal style="--d:.25s">
+          <span>ORIGIN / <b>GEDEO, ETHIOPIA</b></span>
+          <span>ALT / <b>1,900–2,200 M</b></span>
+          <span>LOT / <b>04 — WASHED</b></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- field-notes map -->
+    <div class="journal">
+      <div class="journal-top">
+        <h3 data-reveal><span class="lm"><span>The journey — field notes</span></span></h3>
+        <p class="mono" data-reveal style="--d:.1s">HARVEST NOV — JAN · SHIPPED FEB · ROASTED WEEKLY</p>
+      </div>
+      <div class="map-wrap" data-reveal style="--d:.15s">
+        <svg viewBox="0 0 900 480" role="img" aria-label="Abstract journal map of the route from Gedeo, Ethiopia to London">
+          <g stroke="rgba(36,27,18,.14)" stroke-width="1">
+            <path d="M60 400 q60 -46 128 -30 q70 16 118 -22 q40 -32 96 -30" fill="none"/>
+            <path d="M48 428 q70 -52 150 -34 q78 18 132 -26 q46 -36 108 -34" fill="none"/>
+            <path d="M76 372 q50 -38 106 -26 q58 12 98 -18" fill="none"/>
+          </g>
+          <g stroke="rgba(36,27,18,.22)" stroke-width="1">
+            <line x1="180" y1="112" x2="180" y2="128"/><line x1="172" y1="120" x2="188" y2="120"/>
+            <line x1="452" y1="66" x2="452" y2="82"/><line x1="444" y1="74" x2="460" y2="74"/>
+            <line x1="700" y1="330" x2="700" y2="346"/><line x1="692" y1="338" x2="708" y2="338"/>
+            <line x1="330" y1="260" x2="330" y2="276"/><line x1="322" y1="268" x2="338" y2="268"/>
+          </g>
+          <path class="route-ants" d="M150 366 C 300 300, 420 344, 520 268 S 690 148, 764 118"
+                fill="none" stroke="#6e4b30" stroke-width="2" stroke-linecap="round"/>
+          <g>
+            <circle cx="150" cy="366" r="6" fill="#6e4b30"/>
+            <circle class="pulse-ring" cx="150" cy="366" r="12" fill="none" stroke="#6e4b30" stroke-width="1.5"/>
+            <text x="150" y="396" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#241b12">GEDEO — 6.2°N 38.2°E</text>
+            <text x="150" y="414" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="2" fill="#a99a83">THE SMALLHOLDING</text>
+          </g>
+          <g>
+            <circle cx="764" cy="118" r="6" fill="#241b12"/>
+            <circle class="pulse-ring" cx="764" cy="118" r="12" fill="none" stroke="#241b12" stroke-width="1.5"/>
+            <text x="764" y="96" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#241b12">LONDON — 51.5°N 0.1°W</text>
+            <text x="764" y="146" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="2" fill="#a99a83">THE COFFEE HOUSE</text>
+          </g>
+          <g transform="translate(684,352)" stroke="#c39a6b" fill="none" stroke-width="1.4">
+            <circle r="46" stroke-dasharray="3 5"/>
+            <text y="4" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="15" fill="#6e4b30" stroke="none">lot 04</text>
+            <text y="22" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" letter-spacing="2" fill="#a99a83" stroke="none">WASHED</text>
+          </g>
+          <g transform="translate(830,60)" stroke="#241b12" fill="none" stroke-width="1.4">
+            <line y1="26" y2="-26"/><path d="M-7 -16 L0 -28 L7 -16" />
+            <text x="0" y="-38" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#241b12" stroke="none">N</text>
+          </g>
+        </svg>
+      </div>
+      <div class="journal-data">
+        <div class="jd" data-reveal><span class="k">Origin</span><span class="v">Gedeo, Ethiopia</span></div>
+        <div class="jd" data-reveal style="--d:.06s"><span class="k">Altitude</span><span class="v">1,900 – 2,200 m</span></div>
+        <div class="jd" data-reveal style="--d:.12s"><span class="k">Variety</span><span class="v">Ethiopian heirloom</span></div>
+        <div class="jd" data-reveal style="--d:.18s"><span class="k">Process</span><span class="v">Washed, sun-dried</span></div>
+        <div class="jd" data-reveal style="--d:.24s"><span class="k">Flavor</span><span class="v">Jasmine · bergamot · wild honey</span></div>
+      </div>
+      <p class="journal-note" data-reveal>Part of our brand story — the lot changes with every harvest.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 02 — ROAST ============ -->
+<section id="roast" class="chap" data-time="06:25" data-label="ROAST">
+  <div class="frame">
+    <div class="roast-grid">
+      <div class="roast-copy">
+        <div class="chap-head" style="margin-bottom:clamp(24px,3vw,40px)">
+          <p class="kicker" data-reveal><span class="rule"></span>CHAPTER 02 — 06:25</p>
+          <h2 class="display"><span class="lm" data-reveal><span>ROAST</span></span></h2>
+          <p class="sub-serif" style="color:var(--caramel)"><span class="lm" data-reveal style="--d:.12s"><span>Heat changes everything.</span></span></p>
+        </div>
+        <p class="body-copy" data-reveal style="--d:.15s">Green coffee arrives hard and grassy. Twelve minutes in the drum and it is caramel, fruit and smoke. We roast small — twice a week — in a converted print shop two streets from the café.</p>
+        <div class="roast-meta" data-reveal style="--d:.22s">
+          <span>DRUM / 12 KG</span><span>BATCH / TUE + FRI</span><span>FIRST CRACK / 196°C</span>
+        </div>
+      </div>
+      <figure class="roast-media" data-reveal="fade">
+        <div class="ph" data-cursor="VIEW" data-plx="0.06">
+          <img src="https://image.qwenlm.ai/generated-images/97dcc67c-fa42-47a8-b308-feb2e35339a9/_result.png"
+               alt="The drum roaster glowing amber in a dark workshop, beans tumbling in the cooling tray"
+               width="1600" height="1200" loading="lazy" decoding="async">
+        </div>
+        <figcaption><span>THE ROASTERY — TWO STREETS AWAY</span><span>TUE / 06:25</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="profile">
+      <div class="profile-top">
+        <span class="t" data-reveal>ROAST PROFILE — WHERE WE SIT</span>
+        <span class="ours" data-reveal style="--d:.1s">ours, just past first crack →</span>
+      </div>
+      <div class="deg-track" data-reveal="fade">
+        <div class="deg-marker"><i>OURS</i></div>
+      </div>
+      <div class="deg-stages">
+        <div class="stage" data-reveal>
+          <span class="bean l" aria-hidden="true"></span>
+          <span class="nm">Light</span>
+          <span class="nts">FLORAL / TEA-LIKE / BRIGHT</span>
+          <span class="verdict">For the filter bar.</span>
+        </div>
+        <div class="stage is-ours" data-reveal style="--d:.12s">
+          <span class="bean m" aria-hidden="true"></span>
+          <span class="nm">Medium</span>
+          <span class="nts">CARAMEL / ROUND / CACAO</span>
+          <span class="verdict">Ours — for espresso and the house cup.</span>
+        </div>
+        <div class="stage" data-reveal style="--d:.24s">
+          <span class="bean d" aria-hidden="true"></span>
+          <span class="nm">Dark</span>
+          <span class="nts">SMOKE / ASH / BITTER</span>
+          <span class="verdict">Not ours. Never ours.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 03 — GRIND ============ -->
+<section id="grind" class="chap" data-time="06:41" data-label="GRIND">
+  <span class="g-p" style="left:8%;  animation-duration:9s;  animation-delay:0s" aria-hidden="true"></span>
+  <span class="g-p" style="left:22%; animation-duration:12s; animation-delay:2.2s" aria-hidden="true"></span>
+  <span class="g-p" style="left:47%; animation-duration:10s; animation-delay:1.1s" aria-hidden="true"></span>
+  <span class="g-p" style="left:63%; animation-duration:13s; animation-delay:3.4s" aria-hidden="true"></span>
+  <span class="g-p" style="left:78%; animation-duration:9.5s;animation-delay:.6s" aria-hidden="true"></span>
+  <span class="g-p" style="left:91%; animation-duration:11s; animation-delay:2.8s" aria-hidden="true"></span>
+  <div class="frame">
+    <div class="grind-grid">
+      <figure class="grind-media" data-reveal>
+        <div class="ph" data-cursor="VIEW" data-plx="0.09">
+          <img src="https://image.qwenlm.ai/generated-images/97580e92-7c8b-4ab7-80fa-9c9bca374eef/_result.png"
+               alt="Macro photograph of the grinder — fresh grounds falling in the low light"
+               width="1400" height="1750" loading="lazy" decoding="async">
+        </div>
+      </figure>
+      <div class="grind-word">
+        <div class="chap-head" style="margin-bottom:clamp(24px,3vw,40px)">
+          <p class="kicker" data-reveal><span class="rule"></span>CHAPTER 03 — 06:41</p>
+          <h2 class="display"><span class="lm" data-reveal><span>GRIND</span></span></h2>
+          <p class="sub-serif" style="color:var(--caramel)"><span class="lm" data-reveal style="--d:.12s"><span>The moment before the water.</span></span></p>
+        </div>
+        <p class="body-copy" data-reveal style="--d:.15s">The grinder is the loudest thing we own. It is loud for four seconds — then the room is quiet again, and it smells the way a morning should.</p>
+        <div class="grind-data" data-reveal style="--d:.22s">
+          <span>DOSE / 15.0 G</span><span>SET / MEDIUM-FINE</span><span>GROUND / 30 SEC BEFORE</span>
+        </div>
+        <p class="grind-note" data-reveal style="--d:.3s">— NOTHING IS GROUND UNTIL YOU ORDER.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 04 — BREW ============ -->
+<section id="brew" class="chap" data-time="06:52" data-label="BREW">
+  <div class="frame">
+    <div class="chap-head">
+      <p class="kicker" data-reveal><span class="rule"></span>CHAPTER 04 — 06:52</p>
+      <h2 class="display"><span class="lm" data-reveal><span>BREW</span></span></h2>
+      <p class="sub-serif" style="color:var(--coffee)"><span class="lm" data-reveal style="--d:.12s"><span>Time. Water. Precision.</span></span></p>
+    </div>
+
+    <div class="brew-top">
+      <div>
+        <p class="body-copy" data-reveal>Pour over, one cup at a time. A gooseneck kettle, a paper cone, water at ninety-two degrees. The water goes in circles. The coffee answers.</p>
+        <div class="recipe">
+          <div data-reveal><span class="k">Coffee</span><span class="v">15 g</span></div>
+          <div data-reveal style="--d:.06s"><span class="k">Water</span><span class="v">250 g</span></div>
+          <div data-reveal style="--d:.12s"><span class="k">Heat</span><span class="v">92 °C</span></div>
+          <div data-reveal style="--d:.18s"><span class="k">Time</span><span class="v">2:45</span></div>
+        </div>
+      </div>
+      <figure class="brew-media" data-reveal style="--d:.1s">
+        <div class="ph" data-cursor="VIEW" data-plx="0.05">
+          <img src="https://image.qwenlm.ai/generated-images/016c0f8d-64c0-488c-b989-7d99e0763dad/_result.png"
+               alt="The first pour over of the day — gooseneck kettle pouring into a ceramic cone on a glass server"
+               width="1400" height="1750" loading="lazy" decoding="async">
+        </div>
+        <figcaption><span>V60 — THE FIRST POUR OVER</span><span>06:52</span></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- interactive brew -->
+  <div class="stage-wrap" id="stageWrap">
+    <div class="brew-stage" id="brewStage">
+      <div class="vessel-col">
+        <svg id="brewSvg" viewBox="0 0 320 430" role="img" aria-label="A glass server filling with coffee as you scroll">
+          <defs>
+            <linearGradient id="coffeeGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#7c5433"/><stop offset=".25" stop-color="#5a3a22"/><stop offset="1" stop-color="#2c1c0f"/>
+            </linearGradient>
+            <clipPath id="serverClip">
+              <path d="M112 196 h96 v10 c20 12 30 34 30 60 v76 c0 10 -8 18 -18 18 H100 c-10 0 -18 -8 -18 -18 v-76 c0 -26 10 -48 30 -60 Z"/>
+            </clipPath>
+          </defs>
+          <!-- steam -->
+          <g stroke="#a99a83" stroke-width="2.4" fill="none" stroke-linecap="round">
+            <path class="steam-p s1" d="M138 44 q7 -11 0 -22 q-7 -11 0 -22"/>
+            <path class="steam-p s2" d="M170 50 q7 -11 0 -22 q-7 -11 0 -22"/>
+          </g>
+          <!-- cone -->
+          <path d="M96 66 L224 66 L186 132 L134 132 Z" fill="#efe6d4" stroke="#241b12" stroke-width="2.5"/>
+          <line x1="118" y1="72" x2="140" y2="124" stroke="#c9b896" stroke-width="1.6"/>
+          <line x1="160" y1="70" x2="160" y2="126" stroke="#c9b896" stroke-width="1.6"/>
+          <line x1="202" y1="72" x2="180" y2="124" stroke="#c9b896" stroke-width="1.6"/>
+          <!-- stream -->
+          <line id="brewStream" x1="160" y1="134" x2="160" y2="194" stroke="#c9b896" stroke-width="3.5" stroke-dasharray="6 8" opacity="0"/>
+          <!-- coffee fill -->
+          <g clip-path="url(#serverClip)">
+            <rect id="brewFill" x="78" y="362" width="164" height="0" fill="url(#coffeeGrad)"/>
+            <rect id="brewSurf" x="78" y="360" width="164" height="4" fill="#c39a6b" opacity="0"/>
+          </g>
+          <!-- server body -->
+          <path d="M112 196 h96 v10 c20 12 30 34 30 60 v76 c0 10 -8 18 -18 18 H100 c-10 0 -18 -8 -18 -18 v-76 c0 -26 10 -48 30 -60 Z"
+                fill="rgba(242,234,217,.06)" stroke="#241b12" stroke-width="2.5"/>
+          <path d="M238 252 c 24 6 24 64 0 70" fill="none" stroke="#241b12" stroke-width="2.5"/>
+          <g stroke="#241b12" stroke-width="1.6" opacity=".55">
+            <line x1="222" y1="250" x2="234" y2="250"/>
+            <line x1="226" y1="292" x2="236" y2="292"/>
+            <line x1="222" y1="330" x2="234" y2="330"/>
+          </g>
+          <!-- scale -->
+          <rect x="88" y="368" width="144" height="13" rx="3" fill="#241b12"/>
+          <rect x="142" y="371.5" width="36" height="6" rx="1" fill="#c39a6b" opacity=".75"/>
+          <text x="160" y="406" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="3" fill="#a99a83">SCALE — 0.0 G</text>
+        </svg>
+        <div id="brewTimer">0:00</div>
+        <div id="brewState">READY — 15 G GROUND, WAITING</div>
+      </div>
+      <div class="brew-steps" aria-label="Brew steps">
+        <p class="kicker" style="color:var(--coffee); margin-bottom:8px"><span class="rule"></span>THE RITUAL — KEEP SCROLLING</p>
+        <div class="b-step" data-at="0.16"><span class="n">01</span><span class="t">Water</span><span class="d">250 G / 92 °C</span></div>
+        <div class="b-step" data-at="0.42"><span class="n">02</span><span class="t">Bloom</span><span class="d">45 SEC — THE COFFEE BREATHES</span></div>
+        <div class="b-step" data-at="0.62"><span class="n">03</span><span class="t">Pour</span><span class="d">IN THREES — SLOWLY</span></div>
+        <div class="b-step" data-at="0.84"><span class="n">04</span><span class="t">Draw down</span><span class="d">2:45 TOTAL</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 05 — POUR ============ -->
+<section id="pour" data-time="06:58" data-label="POUR">
+  <div class="pour-bleed" data-reveal="fade">
+    <div class="ph" data-cursor="VIEW">
+      <img src="https://image.qwenlm.ai/generated-images/ac99c749-3b1d-44e9-b423-458a242b42a0/_result.png"
+           alt="Coffee being poured from a glass server into a ceramic cup — a thin amber stream in warm rim light"
+           width="1920" height="1200" loading="lazy" decoding="async">
+    </div>
+    <div class="pour-shade" aria-hidden="true"></div>
+    <div class="pour-text">
+      <p class="kicker mono"><span class="rule"></span>CHAPTER 05 — 06:58</p>
+      <p class="big">
+        <span class="lm" data-reveal><span>Pour</span></span>
+        <span class="lm" data-reveal style="--d:.14s"><span><em>slowly.</em></span></span>
+      </p>
+      <span class="mono" data-reveal style="--d:.3s">THERE IS NO RUSH.</span>
+    </div>
+    <p class="pour-tiny" data-reveal style="--d:.4s">From the server to the cup — twenty centimetres. The best part of the morning takes four seconds.</p>
+  </div>
+</section>
+
+<!-- ============ THE CUP ============ -->
+<section id="cup" class="chap" data-time="07:00" data-label="THE CUP">
+  <div class="frame">
+    <div class="cup-grid">
+      <div>
+        <p class="cup-cap" data-reveal>THE FIRST CUP</p>
+        <p class="cup-word">
+          <span class="lm" data-reveal><span>SOME THINGS</span></span>
+          <span class="lm" data-reveal style="--d:.12s"><span class="it">should be</span></span>
+          <span class="lm" data-reveal style="--d:.24s"><span>SIMPLE.</span></span>
+        </p>
+        <p class="cup-note" data-reveal style="--d:.34s">ONE CUP — NO LOGO — WARM IN BOTH HANDS</p>
+      </div>
+      <div class="cup-visual" data-reveal="fade">
+        <span class="ring-stain" aria-hidden="true"></span>
+        <svg viewBox="0 0 420 360" role="img" aria-label="A simple ceramic cup on a saucer, steam rising">
+          <g class="cup-steam" stroke="#a99a83" stroke-width="2.6" fill="none" stroke-linecap="round">
+            <path class="cs c1" d="M186 118 q8 -13 0 -26 q-8 -13 0 -26"/>
+            <path class="cs c2" d="M212 112 q8 -13 0 -26 q-8 -13 0 -26"/>
+            <path class="cs c3" d="M236 120 q7 -11 0 -22 q-7 -11 0 -22"/>
+          </g>
+          <ellipse cx="210" cy="300" rx="150" ry="22" fill="#e3d7bf"/>
+          <ellipse cx="210" cy="296" rx="150" ry="22" fill="#efe6d4" stroke="#241b12" stroke-width="2"/>
+          <ellipse cx="210" cy="296" rx="96" ry="13" fill="none" stroke="#c9b896" stroke-width="1.4"/>
+          <path d="M132 150 h156 v22 c0 56 -30 96 -78 96 s-78 -40 -78 -96 Z" fill="#f7f1e4" stroke="#241b12" stroke-width="2.4"/>
+          <ellipse cx="210" cy="150" rx="78" ry="16" fill="#efe6d4" stroke="#241b12" stroke-width="2.4"/>
+          <ellipse cx="210" cy="150" rx="62" ry="11.5" fill="#3d2817"/>
+          <ellipse cx="210" cy="149" rx="62" ry="11.5" fill="none" stroke="#c39a6b" stroke-width="1.6" opacity=".8"/>
+          <path d="M288 168 c 34 6 34 62 0 70" fill="none" stroke="#241b12" stroke-width="2.4"/>
+          <ellipse cx="238" cy="168" rx="26" ry="6" fill="#c39a6b" opacity=".28"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAPTER 06 — FIRST SIP ============ -->
+<section id="sip" class="chap warm-wash" data-time="07:04" data-label="FIRST SIP">
+  <div class="frame">
+    <div class="sip-grid">
+      <div>
+        <div class="chap-head" style="margin-bottom:clamp(24px,3vw,40px)">
+          <p class="kicker" data-reveal><span class="rule"></span>CHAPTER 06 — 07:04</p>
+          <h2 class="display"><span class="lm" data-reveal><span>FIRST SIP</span></span></h2>
+          <p class="sub-serif" style="color:var(--coffee)"><span class="lm" data-reveal style="--d:.12s"><span>That's why we're here.</span></span></p>
+        </div>
+        <p class="body-copy" data-reveal style="--d:.15s">The room is quiet. The light is low. Somewhere, a chair moves. The first sip is the reason the alarm went off.</p>
+      </div>
+      <figure class="sip-media" data-reveal style="--d:.1s">
+        <div class="ph" data-cursor="VIEW" data-plx="0.05">
+          <img src="https://image.qwenlm.ai/generated-images/e43346ae-63ce-42d1-b08a-cbb4e137cd4c/_result.png"
+               alt="A person taking the first sip of a flat white at the window table in warm morning light"
+               width="1400" height="1750" loading="lazy" decoding="async">
+        </div>
+        <figcaption><span>TABLE 04 — BY THE WINDOW</span><span>07:04</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE MENU ============ -->
+<section id="menu" class="chap" data-time="07:12" data-label="THE MENU">
+  <div class="frame">
+    <div class="menu-head">
+      <div>
+        <p class="kicker mono" style="color:var(--coffee); margin-bottom:18px" data-reveal><span class="rule"></span>THE MENU — SERVED ALL DAY, UNTIL 17:30</p>
+        <h2 class="display"><span class="lm" data-reveal><span>THE MENU</span></span></h2>
+        <p class="sub-serif" style="color:var(--coffee); margin-top:14px"><span class="lm" data-reveal style="--d:.12s"><span>Small, on purpose.</span></span></p>
+      </div>
+      <div class="right" data-reveal style="--d:.15s">
+        <span>PRICES IN £ — OAT, NO CHARGE</span><br>
+        <span>HOVER AN ITEM — OR TAP — TO SEE IT</span>
+      </div>
+    </div>
+
+    <figure class="mobile-peek" id="mobilePeek">
+      <div class="ph"><img id="mobilePeekImg" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" width="1600" height="1000" loading="lazy" decoding="async"><span class="mp-word" id="mobilePeekWord"></span></div>
+      <figcaption id="mobilePeekCap"></figcaption>
+    </figure>
+
+    <div class="cats" id="cats">
+      <div class="cat open" data-cat>
+        <button class="cat-h" aria-expanded="true" data-cursor="EXPLORE">
+          <span class="no">I</span><span class="nm">Espresso</span><span class="cnt">3 ITEMS</span><span class="x" aria-hidden="true">+</span>
+        </button>
+        <div class="cat-b"><div class="cat-b-in"><ul class="items">
+          <li class="mi" data-peek="word:espresso" data-cap="House espresso — double, Gedeo, balanced"><span class="mi-n">House Espresso</span><span class="mi-d">DOUBLE / GEDEO / BALANCED</span><span class="mi-p">3.5</span></li>
+          <li class="mi" data-peek="word:espresso" data-cap="Long black — espresso, hot water"><span class="mi-n">Long Black</span><span class="mi-d">ESPRESSO / HOT WATER</span><span class="mi-p">4.0</span></li>
+          <li class="mi" data-peek="word:espresso" data-cap="Cortado — espresso, a little milk"><span class="mi-n">Cortado</span><span class="mi-d">ESPRESSO / A LITTLE MILK</span><span class="mi-p">4.5</span></li>
+        </ul></div></div>
+      </div>
+
+      <div class="cat" data-cat>
+        <button class="cat-h" aria-expanded="false" data-cursor="EXPLORE">
+          <span class="no">II</span><span class="nm">Filter</span><span class="cnt">2 ITEMS</span><span class="x" aria-hidden="true">+</span>
+        </button>
+        <div class="cat-b"><div class="cat-b-in"><ul class="items">
+          <li class="mi" data-peek="img:https://image.qwenlm.ai/generated-images/016c0f8d-64c0-488c-b989-7d99e0763dad/_result.png" data-cap="Pour over — single origin, slow"><span class="mi-n">Pour Over</span><span class="mi-d">SINGLE ORIGIN / GEDEO / SLOW</span><span class="mi-p">5.5</span></li>
+          <li class="mi" data-peek="img:https://image.qwenlm.ai/generated-images/ac99c749-3b1d-44e9-b423-458a242b42a0/_result.png" data-cap="Batch filter — daily, honest"><span class="mi-n">Batch Filter</span><span class="mi-d">DAILY / HONEST / REFILLS BEFORE NINE</span><span class="mi-p">4.0</span></li>
+        </ul></div></div>
+      </div>
+
+      <div class="cat" data-cat>
+        <button class="cat-h" aria-expanded="false" data-cursor="EXPLORE">
+          <span class="no">III</span><span class="nm">Milk</span><span class="cnt">3 ITEMS</span><span class="x" aria-hidden="true">+</span>
+        </button>
+        <div class="cat-b"><div class="cat-b-in"><ul class="items">
+          <li class="mi" data-peek="img:https://image.qwenlm.ai/generated-images/e43346ae-63ce-42d1-b08a-cbb4e137cd4c/_result.png" data-cap="Flat white — espresso, silky milk"><span class="mi-n">Flat White</span><span class="mi-d">ESPRESSO / SILKY MILK</span><span class="mi-p">4.5</span></li>
+          <li class="mi" data-peek="img:https://image.qwenlm.ai/generated-images/e43346ae-63ce-42d1-b08a-cbb4e137cd4c/_result.png" data-cap="Cappuccino — espresso, proper foam"><span class="mi-n">Cappuccino</span><span class="mi-d">ESPRESSO / PROPER FOAM</span><span class="mi-p">4.5</span></li>
+          <li class="mi" data-peek="img:https://image.qwenlm.ai/generated-images/e43346ae-63ce-42d1-b08a-cbb4e137cd4c/_result.png" data-cap="Latte — espresso, more milk"><span class="mi-n">Latte</span><span class="mi-d">ESPRESSO / MORE MILK</span><span class="mi-p">5.0</span></li>
+        </ul></div></div>
+      </div>
+
+      <div class="cat" data-cat>
+        <button class="cat-h" aria-expanded="false" data-cursor="EXPLORE">
+          <span class="no">IV</span><span class="nm">Food</span><span class="cnt">2 ITEMS</span><span class="x" aria-hidden="true">+</span>
+        </button>
+        <div class="cat-b"><div class="cat-b-in"><ul class="items">
+          <li class="mi" data-peek="word:toast" data-cap="Sourdough toast — cultured butter, jam"><span class="mi-n">Sourdough Toast</span><span class="mi-d">CULTURED BUTTER / JAM</span><span class="mi-p">4.5</span></li>
+          <li class="mi" data-peek="word:toast" data-cap="Egg on toast — soft, chive"><span class="mi-n">Egg on Toast</span><span class="mi-d">SOFT / CHIVE</span><span class="mi-p">6.0</span></li>
+        </ul></div></div>
+      </div>
+
+      <div class="cat" data-cat>
+        <button class="cat-h" aria-expanded="false" data-cursor="EXPLORE">
+          <span class="no">V</span><span class="nm">Sweet</span><span class="cnt">3 ITEMS</span><span class="x" aria-hidden="true">+</span>
+        </button>
+        <div class="cat-b"><div class="cat-b-in"><ul class="items">
+          <li class="mi" data-peek="img:https://image.qwenlm.ai/generated-images/a7afff55-de75-4946-af7e-fb03b30bcf06/_result.png" data-cap="Cinnamon roll — baked at six"><span class="mi-n">Cinnamon Roll</span><span class="mi-d">BAKED AT SIX</span><span class="mi-p">4.5</span></li>
+          <li class="mi" data-peek="img:https://image.qwenlm.ai/generated-images/a7afff55-de75-4946-af7e-fb03b30bcf06/_result.png" data-cap="Croissant — salted butter"><span class="mi-n">Croissant</span><span class="mi-d">SALTED BUTTER</span><span class="mi-p">3.5</span></li>
+          <li class="mi" data-peek="img:https://image.qwenlm.ai/generated-images/a7afff55-de75-4946-af7e-fb03b30bcf06/_result.png" data-cap="Cardamom bun — the loud one"><span class="mi-n">Cardamom Bun</span><span class="mi-d">THE LOUD ONE</span><span class="mi-p">4.5</span></li>
+        </ul></div></div>
+      </div>
+    </div>
+
+    <div class="menu-foot" data-reveal>
+      <span>TAKEAWAY — CUPS COME BACK</span>
+      <span>DECAF — NOT A PUNISHMENT</span>
+      <span>THE WATER IS FREE, ALWAYS</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOD ============ -->
+<section id="food" class="chap" data-time="08:30" data-label="SOMETHING TO EAT">
+  <div class="frame">
+    <div class="food-grid">
+      <figure class="food-media" data-reveal>
+        <div class="ph" data-cursor="VIEW" data-plx="0.05">
+          <img src="https://image.qwenlm.ai/generated-images/a7afff55-de75-4946-af7e-fb03b30bcf06/_result.png"
+               alt="Morning pastries on a stone table — croissants, a cinnamon roll and a cardamom bun in raking light"
+               width="1600" height="1200" loading="lazy" decoding="async">
+        </div>
+        <figcaption><span>THE BACK ROOM — FIRST TRAY</span><span>06:00</span></figcaption>
+      </figure>
+      <div>
+        <p class="cup-cap" data-reveal>BAKED ON SITE — DAILY</p>
+        <p class="food-word">
+          <span class="lm" data-reveal><span>SOMETHING</span></span>
+          <span class="lm" data-reveal style="--d:.12s"><span class="it">to eat.</span></span>
+        </p>
+        <p class="body-copy" data-reveal style="--d:.2s; margin-top:24px">Cinnamon rolls, croissants, cardamom buns — out of the oven from six. When they are gone, they are gone.</p>
+        <ul class="food-tray" data-reveal style="--d:.28s">
+          <li><span class="t">06:00</span><span>FIRST TRAY</span></li>
+          <li><span class="t">08:30</span><span>SECOND TRAY</span></li>
+          <li><span class="t">12:00</span><span>USUALLY GONE</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE SPACE ============ -->
+<section id="space" class="chap" data-time="09:15" data-label="THE SPACE">
+  <div class="frame">
+    <div class="chap-head">
+      <p class="kicker" data-reveal style="color:var(--coffee)"><span class="rule"></span>THE ROOM, MAPPED</p>
+      <h2 class="display"><span class="lm" data-reveal><span>THE SPACE</span></span></h2>
+      <p class="sub-serif" style="color:var(--coffee)"><span class="lm" data-reveal style="--d:.12s"><span>Stay longer than you planned.</span></span></p>
+    </div>
+    <p class="body-copy" data-reveal>Concrete, oak, one long window. Twenty-six seats, a bench for reading, a counter for watching the machine. Move your cursor across the room.</p>
+
+    <div class="room" id="room" data-reveal="fade">
+      <div class="ph" data-cursor="VIEW">
+        <img src="https://image.qwenlm.ai/generated-images/b4e506b7-d1cf-4a00-b765-b7c43275d609/_result.png"
+             alt="The STILL. room — counter, window, bar and tables in soft light"
+             width="1920" height="1080" loading="lazy" decoding="async">
+      </div>
+      <div class="room-shade" aria-hidden="true"></div>
+      <span class="rl" style="--x:15%; --y:30%" data-depth="16"><i></i>WINDOW</span>
+      <span class="rl" style="--x:46%; --y:66%" data-depth="26"><i></i>COUNTER</span>
+      <span class="rl" style="--x:66%; --y:46%" data-depth="20"><i></i>BAR</span>
+      <span class="rl" style="--x:84%; --y:74%" data-depth="32"><i></i>TABLE 04</span>
+      <span class="rl" style="--x:32%; --y:80%" data-depth="12"><i></i>THE BENCH</span>
+    </div>
+
+    <div class="materials" data-reveal>
+      <span><b>OAK</b> — COUNTER + TABLES</span>
+      <span><b>CONCRETE</b> — FLOOR + WALLS</span>
+      <span><b>CERAMIC</b> — EVERY CUP</span>
+      <span><b>BRASS</b> — THE SMALL THINGS</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AFTERNOON ============ -->
+<section id="afternoon" class="timechap" data-time="14:32" data-label="AFTERNOON">
+  <div class="ph-bg ph" data-cursor="VIEW">
+    <img data-plx-img="0.08" src="https://image.qwenlm.ai/generated-images/258c0d87-0384-4028-960b-3be67efcf675/_result.png"
+         alt="The café alive in the afternoon — people at oak tables in golden sunlight"
+         width="1920" height="1200" loading="lazy" decoding="async">
+  </div>
+  <div class="shade" aria-hidden="true"></div>
+  <div class="tc-inner">
+    <p class="tc-time" data-reveal>— 14:32</p>
+    <h2 class="tc-serif">
+      <span class="lm" data-reveal style="--d:.08s"><span>THE ROOM</span></span>
+      <span class="lm" data-reveal style="--d:.2s"><span>GETS <em>LOUDER.</em></span></span>
+    </h2>
+    <p class="tc-tiny" data-reveal style="--d:.3s">Cups stack. Chairs turn toward the sun. Someone laughs in the corner. We would never ask them to leave.</p>
+  </div>
+</section>
+
+<!-- ============ GOLDEN HOUR ============ -->
+<section id="golden" class="timechap" data-time="17:42" data-label="THE LAST LIGHT">
+  <div class="ph-bg ph" data-cursor="VIEW">
+    <img data-plx-img="0.08" src="https://image.qwenlm.ai/generated-images/9d64b103-7fc0-426a-9da1-223320155963/_result.png"
+         alt="Golden hour in the café — deep amber light across the tables, lamps glowing, one last customer"
+         width="1920" height="1200" loading="lazy" decoding="async">
+  </div>
+  <div class="shade" aria-hidden="true"></div>
+  <div class="tc-inner">
+    <p class="tc-time" data-reveal>— 17:42</p>
+    <h2 class="tc-serif">
+      <span class="lm" data-reveal style="--d:.08s"><span>THE</span></span>
+      <span class="lm" data-reveal style="--d:.2s"><span>LAST <em>LIGHT.</em></span></span>
+    </h2>
+    <p class="tc-tiny" data-reveal style="--d:.3s">The window goes amber. The last flat white of the day goes to the man who always reads.</p>
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section id="closing" class="timechap" data-time="18:07" data-label="SEE YOU TOMORROW">
+  <div class="ph-bg ph">
+    <img data-plx-img="0.06" src="https://image.qwenlm.ai/generated-images/9d64b103-7fc0-426a-9da1-223320155963/_result.png"
+         alt="The café at closing — dim warm light over quiet tables"
+         width="1920" height="1200" loading="lazy" decoding="async">
+  </div>
+  <div class="shade" aria-hidden="true"></div>
+  <div class="tc-inner">
+    <p class="tc-time" data-reveal>— 18:07</p>
+    <h2 class="tc-serif">
+      <span class="lm" data-reveal style="--d:.08s"><span>SEE YOU</span></span>
+      <span class="lm" data-reveal style="--d:.2s"><span><em>TOMORROW.</em></span></span>
+    </h2>
+    <p class="tc-tiny" data-reveal style="--d:.3s">The machine hisses its last. The chairs stay down. The first cup of tomorrow is already planned — it always is.</p>
+    <p class="closing-back" data-reveal style="--d:.4s">TOMORROW STARTS AGAIN AT <b>05:42</b></p>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section id="cta" data-time="18:07" data-label="SEE YOU TOMORROW">
+  <div class="cta-in">
+    <p class="kicker mono" data-reveal><span class="rule"></span>COFFEE / DAILY</p>
+    <h2 class="cta-big">
+      <span class="lm" data-reveal style="--d:.08s"><span>COME FOR</span></span>
+      <span class="lm" data-reveal style="--d:.2s"><span>A <em>CUP.</em></span></span>
+    </h2>
+    <p class="sub-serif" style="margin-top:clamp(16px,2.6vh,26px); color:var(--stone)">
+      <span class="lm" data-reveal style="--d:.32s"><span>Stay for a while.</span></span>
+    </p>
+    <div class="cta-btns" data-reveal style="--d:.4s">
+      <a class="btn solid" href="#visit" data-cursor="EXPLORE">VISIT US</a>
+      <a class="btn" href="#menu" data-cursor="EXPLORE">VIEW MENU</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section id="visit" class="chap" data-time="18:07" data-label="VISIT">
+  <div class="frame">
+    <div class="chap-head">
+      <p class="kicker" data-reveal><span class="rule"></span>FIND US — RIVINGTON STREET</p>
+      <h2 class="display"><span class="lm" data-reveal><span>WE ARE HERE.</span></span></h2>
+    </div>
+    <div class="visit-grid">
+      <div>
+        <div class="v-rows">
+          <div class="v-row" data-reveal><span class="k">Address</span><span class="v">18 Rivington Street<small>LONDON EC2A 3DU</small></span></div>
+          <div class="v-row" data-reveal style="--d:.06s"><span class="k">Hours</span><span class="v">Monday — Sunday<small>07:00 — 18:00 · KITCHEN TIL 17:30</small></span></div>
+          <div class="v-row" data-reveal style="--d:.12s"><span class="k">Phone</span><a class="v" href="tel:+442079460018">+44 20 7946 0018</a></div>
+          <div class="v-row" data-reveal style="--d:.18s"><span class="k">Instagram</span><a class="v" href="https://instagram.com" target="_blank" rel="noopener">@still.coffeehouse</a></div>
+        </div>
+        <p class="journal-note" data-reveal style="--d:.24s; margin-top:22px">TWO MINUTES FROM OLD STREET STATION — FOLLOW THE SMELL.</p>
+      </div>
+      <div>
+        <div class="loc-map" data-reveal style="--d:.1s">
+          <svg viewBox="0 0 640 440" role="img" aria-label="Abstract street map — STILL. at 18 Rivington Street, two minutes from Old Street station">
+            <rect width="640" height="440" fill="#f7f1e4"/>
+            <g stroke="#d8cbb0" stroke-width="1">
+              <rect x="40" y="40" width="150" height="90" fill="none"/>
+              <rect x="250" y="30" width="120" height="100" fill="none"/>
+              <rect x="480" y="60" width="120" height="80" fill="none"/>
+              <rect x="60" y="230" width="120" height="140" fill="none"/>
+              <rect x="300" y="250" width="110" height="120" fill="none"/>
+              <rect x="500" y="240" width="100" height="140" fill="none"/>
+            </g>
+            <g stroke="#241b12" fill="none">
+              <line x1="0" y1="196" x2="640" y2="176" stroke-width="7" opacity=".9"/>
+              <line x1="222" y1="0" x2="238" y2="440" stroke-width="4" opacity=".75"/>
+              <line x1="452" y1="0" x2="470" y2="440" stroke-width="4" opacity=".75"/>
+              <line x1="0" y1="366" x2="640" y2="352" stroke-width="3" opacity=".5"/>
+            </g>
+            <g font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#241b12">
+              <text x="30" y="168">RIVINGTON ST</text>
+              <text x="248" y="420" transform="rotate(-90 248 420)">GREAT EASTERN ST</text>
+              <text x="482" y="420" transform="rotate(-90 482 420)">OLD ST</text>
+              <text x="30" y="392" opacity=".6">CHARLOTTE RD</text>
+            </g>
+            <g>
+              <circle class="pulse-ring" cx="330" cy="188" r="18" fill="none" stroke="#6e4b30" stroke-width="1.6"/>
+              <circle cx="330" cy="188" r="8" fill="#6e4b30" stroke="#f7f1e4" stroke-width="2.5"/>
+              <text x="330" y="150" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="19" fill="#241b12">STILL. — N° 18</text>
+            </g>
+            <g>
+              <circle cx="461" cy="252" r="11" fill="none" stroke="#241b12" stroke-width="1.6"/>
+              <text x="461" y="256.5" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#241b12">M</text>
+              <text x="482" y="282" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="2" fill="#a99a83">OLD STREET STN</text>
+            </g>
+            <g stroke="#241b12" stroke-width="1.4" fill="none">
+              <line x1="576" y1="66" x2="576" y2="26"/><path d="M569 36 L576 24 L583 36"/>
+              <text x="576" y="16" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#241b12" stroke="none">N</text>
+            </g>
+            <g font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="2" fill="#a99a83">
+              <line x1="36" y1="418" x2="136" y2="416" stroke="#a99a83" stroke-width="1.4"/>
+              <text x="146" y="420">100 M</text>
+            </g>
+          </svg>
+        </div>
+        <div class="loc-foot" data-reveal style="--d:.16s">
+          <span>NOT A REAL MAP — AN HONEST ONE</span>
+          <a href="https://maps.google.com/?q=Rivington+Street+London" target="_blank" rel="noopener" style="text-decoration:underline; text-underline-offset:4px" data-cursor="EXPLORE">OPEN IN MAPS ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-in">
+    <p class="foot-brand" aria-label="STILL.">STILL.</p>
+    <div class="foot-mid">
+      <span class="tri">COFFEE / FOOD / PEOPLE</span>
+      <span class="morn">See you in the morning.</span>
+    </div>
+    <div class="foot-legal">
+      <span>© MMXXVI STILL COFFEE HOUSE — 18 RIVINGTON ST, LONDON EC2A</span>
+      <span>OPEN DAILY / 07:00 — 18:00</span>
+      <span>A FICTIONAL COFFEE HOUSE — THE MORNING IS REAL</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var d = document, root = d.documentElement;
+var RM = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var FINE = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+var $ = function(s,c){ return (c||d).querySelector(s); };
+var $$ = function(s,c){ return Array.prototype.slice.call((c||d).querySelectorAll(s)); };
+var clamp = function(v,a,b){ return Math.max(a, Math.min(b, v)); };
+var lerp = function(a,b,t){ return a + (b-a)*t; };
+
+/* ---------- image failure fallback (capture phase catches img errors) ---------- */
+d.addEventListener("error", function(e){
+  var t = e.target;
+  if(!t || t.tagName !== "IMG") return;
+  var host = t.parentElement;
+  if(!host || host.querySelector(".img-fallback")) return;
+  var fb = d.createElement("div");
+  fb.className = "img-fallback";
+  var amp = d.createElement("span"); amp.className = "amp"; amp.textContent = "S.";
+  var tag = d.createElement("span"); tag.className = "tag";
+  tag.textContent = t.alt ? t.alt : "image unavailable";
+  fb.appendChild(amp); fb.appendChild(tag);
+  t.style.display = "none";
+  host.appendChild(fb);
+}, true);
+
+/* ---------- opening sequence: BEFORE DAWN ---------- */
+var day = $("#day");
+function openDay(instant){
+  day.classList.add("live");
+}
+if(RM){
+  openDay(true);
+}else{
+  var dawn = d.createElement("div");
+  dawn.id = "dawn";
+  dawn.innerHTML =
+    '<div class="d-time">05<span class="colon">:</span>42</div>' +
+    '<div class="d-rule"></div>' +
+    '<div class="d-line">The city is still asleep.</div>' +
+    '<div class="d-sub">A QUIET PLACE ON RIVINGTON STREET</div>';
+  d.body.appendChild(dawn);
+  var skipped = false;
+  var timers = [
+    setTimeout(function(){ dawn.classList.add("step1"); }, 250),
+    setTimeout(function(){ dawn.classList.add("step2"); }, 850),
+    setTimeout(function(){ dawn.classList.add("step3"); }, 1250),
+    setTimeout(function(){ dawn.classList.add("step4"); }, 1900),
+    setTimeout(function(){ finishDawn(); }, 3300)
+  ];
+  function finishDawn(){
+    if(skipped) return; skipped = true;
+    timers.forEach(clearTimeout);
+    dawn.classList.add("step1","step2","step3","step4","off");
+    openDay();
+    setTimeout(function(){ if(dawn.parentNode) dawn.parentNode.removeChild(dawn); }, 1700);
+  }
+  ["wheel","touchstart","keydown","click"].forEach(function(ev){
+    window.addEventListener(ev, finishDawn, { passive:true, once:false });
+  });
+}
+
+/* ---------- reveal on scroll ---------- */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(en){
+    if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
+  });
+},{ threshold: 0.16, rootMargin: "0px 0px -6% 0px" });
+$$("[data-reveal]").forEach(function(el){ io.observe(el); });
+$$(".roast-media, .pour-bleed, .cup-visual").forEach(function(el){ io.observe(el); });
+
+/* ---------- story clock ---------- */
+var clockTxt = $("#clockTxt"), clock = $("#clock");
+var clockIO = new IntersectionObserver(function(entries){
+  entries.forEach(function(en){
+    if(en.isIntersecting){
+      var s = en.target;
+      clockTxt.textContent = (s.dataset.time || "") + " — " + (s.dataset.label || "");
+    }
+  });
+},{ rootMargin: "-42% 0px -42% 0px", threshold: 0 });
+$$("[data-time]").forEach(function(s){ clockIO.observe(s); });
+
+/* ---------- fullscreen menu ---------- */
+var overlay = $("#overlay"), menuBtn = $("#menuBtn"), closeBtn = $("#closeBtn");
+function setMenu(open){
+  overlay.classList.toggle("open", open);
+  overlay.setAttribute("aria-hidden", open ? "false" : "true");
+  d.body.classList.toggle("lock", open);
+  clock.classList.toggle("hide", open);
+  if(open){ closeBtn.focus(); } else { menuBtn.focus(); }
+}
+menuBtn.addEventListener("click", function(){ setMenu(true); });
+closeBtn.addEventListener("click", function(){ setMenu(false); });
+$$("a", overlay).forEach(function(a){
+  a.addEventListener("click", function(){ setMenu(false); });
+});
+d.addEventListener("keydown", function(e){
+  if(e.key === "Escape" && overlay.classList.contains("open")) setMenu(false);
+});
+
+/* ---------- menu accordion ---------- */
+$$(".cat").forEach(function(cat){
+  var btn = $(".cat-h", cat);
+  btn.addEventListener("click", function(){
+    var wasOpen = cat.classList.contains("open");
+    $$(".cat").forEach(function(c){
+      c.classList.remove("open");
+      $(".cat-h", c).setAttribute("aria-expanded","false");
+    });
+    if(!wasOpen){
+      cat.classList.add("open");
+      btn.setAttribute("aria-expanded","true");
+    }
+  });
+});
+
+/* ---------- editorial menu: hover peek (desktop) / tap preview (touch) ---------- */
+var peek = $("#peek"), peekImg = $("#peek img"), peekWord = $(".word", peek);
+var mPeek = $("#mobilePeek"), mImg = $("#mobilePeekImg"), mCap = $("#mobilePeekCap"), mWord = $("#mobilePeekWord");
+var peekOn = false, px = 0, py = 0, tx = 0, ty = 0;
+
+function setPeek(kind, val, cap){
+  if(kind === "img"){
+    peek.classList.remove("wordmode");
+    if(peekImg.getAttribute("src") !== val) peekImg.src = val;
+    peekImg.alt = cap || "";
+  }else{
+    peek.classList.add("wordmode");
+    peekWord.textContent = val;
+  }
+}
+if(FINE){
+  $$(".mi").forEach(function(li){
+    li.addEventListener("mouseenter", function(){
+      var spec = li.dataset.peek || "";
+      var i = spec.indexOf(":");
+      if(i < 0) return;
+      setPeek(spec.slice(0,i), spec.slice(i+1), li.dataset.cap);
+      peek.classList.add("on"); peekOn = true;
+    });
+    li.addEventListener("mouseleave", function(){
+      peek.classList.remove("on"); peekOn = false;
+    });
+  });
+}
+$$(".mi").forEach(function(li){
+  li.addEventListener("click", function(){
+    if(FINE) return;
+    var spec = li.dataset.peek || "";
+    var i = spec.indexOf(":");
+    if(i < 0) return;
+    var kind = spec.slice(0,i), val = spec.slice(i+1);
+    mPeek.classList.add("show");
+    if(kind === "img"){
+      if(mImg.getAttribute("src") !== val) mImg.src = val;
+      mImg.alt = li.dataset.cap || "";
+      mImg.style.opacity = "";
+      mWord.textContent = "";
+    }else{
+      mImg.alt = "";
+      mImg.style.opacity = "0";
+      mWord.textContent = val;
+    }
+    mCap.textContent = li.dataset.cap || "";
+    if(mPeek.scrollIntoView && !RM) mPeek.scrollIntoView({ behavior:"smooth", block:"nearest" });
+  });
+});
+
+/* ---------- custom cursor ---------- */
+var cur = $("#cur"), tag = $("#curTag"), tagTxt = $("span", tag);
+var cx = -100, cy = -100, tx2 = -100, ty2 = -100, curOn = false;
+if(FINE && !RM){
+  root.classList.add("cur-on");
+  d.addEventListener("mousemove", function(e){
+    if(!curOn){ curOn = true; cx = tx2 = e.clientX; cy = ty2 = e.clientY; cur.style.opacity = 1; }
+    tx2 = e.clientX; ty2 = e.clientY;
+    var t = e.target.closest ? e.target.closest("[data-cursor]") : null;
+    if(t && t.dataset.cursor){
+      tagTxt.textContent = t.dataset.cursor.toLowerCase();
+      tag.classList.add("on");
+      tag.classList.toggle("big", t.dataset.cursor === "EXPLORE");
+    }else{
+      tag.classList.remove("on");
+    }
+  }, { passive:true });
+  d.addEventListener("mouseleave", function(){ curOn = false; cur.style.opacity = 0; tag.classList.remove("on"); });
+}
+
+/* ---------- room labels parallax ---------- */
+var room = $("#room"), labels = $$(".rl", room || d);
+var rx = 0, ry = 0, rtx = 0, rty = 0;
+if(room && FINE && !RM){
+  room.addEventListener("mousemove", function(e){
+    var b = room.getBoundingClientRect();
+    rtx = ((e.clientX - b.left) / b.width - 0.5) * 2;
+    rty = ((e.clientY - b.top) / b.height - 0.5) * 2;
+  }, { passive:true });
+  room.addEventListener("mouseleave", function(){ rtx = 0; rty = 0; }, { passive:true });
+}
+
+/* ---------- scroll engine: hero scale, parallax, brew stage ---------- */
+var heroMedia = $("#heroMedia");
+var plx = $$("[data-plx]");
+var plxImgs = $$("[data-plx-img]");
+var stageWrap = $("#stageWrap");
+var brewFill = $("#brewFill"), brewSurf = $("#brewSurf"), brewStream = $("#brewStream");
+var brewTimer = $("#brewTimer"), brewState = $("#brewState"), brewStage = $("#brewStage");
+var bSteps = $$(".b-step");
+var STATES = [
+  [0.00, "READY — 15 G GROUND, WAITING"],
+  [0.16, "WATER — 92 °C, IN CIRCLES"],
+  [0.42, "BLOOM — THE COFFEE BREATHES"],
+  [0.62, "POURING — IN THREES"],
+  [0.84, "DRAWING DOWN — ALMOST"],
+  [0.97, "READY. 06:58 — POUR."]
+];
+var ticking = false;
+
+function fmt(sec){
+  sec = Math.round(sec);
+  return Math.floor(sec/60) + ":" + (sec%60 < 10 ? "0" : "") + (sec%60);
+}
+
+function onScroll(){
+  var vh = window.innerHeight, sy = window.scrollY || root.scrollTop;
+
+  /* hero slow push */
+  if(heroMedia){
+    var hp = clamp(sy / vh, 0, 1.1);
+    heroMedia.style.transform = "scale(" + (1 + hp*0.07) + ") translateY(" + (hp*4) + "%)";
+  }
+
+  /* gentle parallax */
+  if(!RM){
+    plx.forEach(function(el){
+      var b = el.getBoundingClientRect();
+      if(b.bottom < -80 || b.top > vh + 80) return;
+      var p = (b.top + b.height/2 - vh/2) / vh;
+      el.style.transform = "translateY(" + (p * -parseFloat(el.dataset.plx) * 160) + "px)";
+    });
+    plxImgs.forEach(function(img){
+      var b = img.getBoundingClientRect();
+      if(b.bottom < -80 || b.top > vh + 80) return;
+      var p = (b.top + b.height/2 - vh/2) / vh;
+      img.style.transform = "translateY(" + (p * -parseFloat(img.dataset.plxImg) * 140) + "px) scale(1.12)";
+    });
+  }
+
+  /* brew stage */
+  if(stageWrap && brewFill){
+    var sb = stageWrap.getBoundingClientRect();
+    var total = sb.height - vh;
+    if(sb.top < vh && sb.bottom > 0 && total > 0){
+      var p = clamp(-sb.top / total, 0, 1);
+      /* fill */
+      var fp = clamp((p - 0.30) / 0.62, 0, 1);
+      fp = fp * fp * (3 - 2 * fp); /* smoothstep */
+      var y = 358 - fp * 148;
+      brewFill.setAttribute("y", y);
+      brewFill.setAttribute("height", 362 - y + 4);
+      brewSurf.setAttribute("y", y - 2);
+      brewSurf.setAttribute("opacity", fp > 0.02 ? 0.85 : 0);
+      /* stream */
+      var pouring = p > 0.16 && p < 0.93;
+      brewStream.setAttribute("opacity", pouring ? 0.9 : 0);
+      brewStream.setAttribute("stroke", p > 0.5 ? "#6e4b30" : "#c9b896");
+      brewStream.setAttribute("stroke-dashoffset", RM ? 0 : -(performance.now()/24 % 14));
+      /* steam */
+      brewStage.classList.toggle("steam-on", p > 0.94);
+      /* timer */
+      brewTimer.textContent = fmt(clamp(p/0.92, 0, 1) * 165);
+      /* state */
+      var msg = STATES[0][1];
+      for(var i=0;i<STATES.length;i++){ if(p >= STATES[i][0]) msg = STATES[i][1]; }
+      if(brewState.textContent !== msg) brewState.textContent = msg;
+      /* steps */
+      bSteps.forEach(function(st){
+        var at = parseFloat(st.dataset.at);
+        st.classList.toggle("active", p >= at && p < at + 0.22);
+        st.classList.toggle("done", p >= at + 0.22);
+      });
+    }
+  }
+  ticking = false;
+}
+function requestTick(){ if(!ticking){ ticking = true; requestAnimationFrame(onScroll); } }
+window.addEventListener("scroll", requestTick, { passive:true });
+window.addEventListener("resize", requestTick, { passive:true });
+
+/* ---------- cursor + label easing loop ---------- */
+function loop(){
+  if(curOn){
+    cx = lerp(cx, tx2, 0.22); cy = lerp(cy, ty2, 0.22);
+    cur.style.transform = "translate(" + (cx-3.5) + "px," + (cy-3.5) + "px)";
+    if(peekOn){
+      px = px || tx2; py = py || ty2;
+      px = lerp(px, tx2 + 40, 0.12); py = lerp(py, ty2 - 30, 0.12);
+      peek.style.transform = "translate(" + px + "px," + py + "px) translate(-50%,-54%) rotate(-2deg)";
+      peek.style.left = "0"; peek.style.top = "0";
+    }
+    tag.style.transform = "translate(" + cx + "px," + cy + "px) translate(-50%,-50%)";
+    tag.style.left = "0"; tag.style.top = "0";
+  }
+  if(room && !RM){
+    rx = lerp(rx, rtx, 0.06); ry = lerp(ry, rty, 0.06);
+    labels.forEach(function(l){
+      var dp = parseFloat(l.dataset.depth || 14);
+      l.style.transform = "translate(-50%,-50%) translate(" + (rx*dp) + "px," + (ry*dp*0.7) + "px)";
+    });
+  }
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+onScroll();
+})();
+</script>
+</body>
+</html>
